@@ -1,0 +1,464 @@
+\documentclass{beamer}
+
+\input{settings.tex}
+
+
+\title{Observers}
+\subtitle{Control Theory, Lecture 10}
+\author{by Sergei Savin}
+\centering
+\date{Spring 2021}
+
+
+
+\begin{document}
+\maketitle
+
+
+
+\begin{frame}{Content}
+\begin{itemize}
+\item Measurement
+\begin{itemize}
+    \item How do we know the state?
+    \item Why information is imperfect?
+    \item Definition
+\end{itemize}
+\item Observation
+\begin{itemize}
+    \item Using the knowledge about dynamics
+    \item Observer
+    \item Observer gains
+\end{itemize}
+\item Observer Design
+\item Observation and Control
+\begin{itemize}
+    \item LTI
+    \item Stability analysis
+    \item Change of variables
+    \item Upper triangular form
+    \item Separation principle
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+
+
+\begin{frame}{Measurement}
+\framesubtitle{How do we know the state?}
+\begin{flushleft}
+
+Before we considered systems and control laws of the following type:
+
+\begin{equation}
+\begin{cases}
+\dot {\bo{x}} = \bo{A} \bo{x} + \bo{B} \bo{u}\\
+\bo{u} = \bo{K} \bo{x}
+\end{cases}
+\end{equation}
+
+But when we implement that control law, how do we know the current value of $\bo{x}$? Previously we always took it from simulation. 
+
+\bigskip
+
+In practice, we take it from \emph{measurement}.
+
+\end{flushleft}
+\end{frame}
+
+\begin{frame}{Measurement}
+\framesubtitle{Why information is imperfect?}
+\begin{flushleft}
+
+There are a number of reasons why we can not directly measure the state of the system. Here are some:
+
+\begin{itemize}
+\item Digital measurements are done in discrete time intervals;
+\item Unpredicted events (faults, collisions, etc.);
+\item Un-modelled kinematics or dynamics (links bending, gear box backlash,  friction, etc.) making the very definition of the state disconnected from reality;
+\item Lack of sensors;
+\item Imprecise, nonlinear and biased sensors;
+\item Physics, quantum-scale effects and alike;
+\end{itemize}
+
+\end{flushleft}
+\end{frame}
+
+\begin{frame}{Measurement}
+\framesubtitle{Definition}
+\begin{flushleft}
+
+Let us introduce new notation. Assume we have an LTI system of the following form:
+
+\begin{equation}
+\begin{cases}
+\dot {\bo{x}} = \bo{A} \bo{x} + \bo{B} \bo{u} \\
+\bo{y} = \bo{C} \bo{x} \\
+\bo{u} = \bo{g}(\hat{\bo{x}}, t)\\
+\hat{\bo{x}} = \bo{o}(\cdot)
+\end{cases}
+\end{equation}
+
+Then:
+
+\begin{itemize}
+\item $\bo{x}$ is the state (actual or true state)
+\item $\bo{y}$ is the output (actual or true output)
+% \item $\Tilde{\bo{y}}$ is the measured output
+\item $\hat{\bo{x}}$ is the estimated (observed) state
+\item $\hat{\bo{y}}$ is the estimated (observed) output
+\end{itemize}
+
+Notice that we never know true state $\bo{x}$, and therefore for the control purposes we have to use the estimated state $\hat{\bo{x}}$.
+
+\end{flushleft}
+\end{frame}
+
+
+
+\begin{frame}{Observation}
+\framesubtitle{Using the knowledge about dynamics}
+\begin{flushleft}
+
+Let us consider autonomous dynamical system
+\begin{equation}
+\label{eq:LTI}
+\begin{cases}
+\dot {\bo{x}} = \bo{A} \bo{x} + \bo{B} \bo{u} \\
+\bo{y} = \bo{C} \bo{x}
+\end{cases}
+\end{equation}
+%
+with measurements $\bo{y}$. We want to get as good an estimate of the state $\hat{\bo{x}}$ as we can.
+
+\bigskip
+
+First note: dynamics should also hold for our observed state:
+\begin{equation}
+\hat{\dot {\bo{x}}} = \bo{A} \hat{\bo{x}} + \bo{B} \bo{u}
+\end{equation}
+%
+Therefore if we know the initial conditions of our system exactly, and we know our model exactly, we can find exact state of the system without using measurement $\bo{y}$. We can call it an open loop observation. Unfortunately, we know neither the model nor the initial conditions precisely.
+
+
+\end{flushleft}
+\end{frame}
+
+
+
+
+
+\begin{frame}{Observation}
+\framesubtitle{Observer}
+\begin{flushleft}
+
+We propose \emph{observer} that takes into account measurements in a linear way:
+
+\begin{equation}
+\label{eq:Observer}
+\hat{\dot {\bo{x}}} = \bo{A} \hat{\bo{x}} + \bo{B} \mathbf u + \bo{L}(\mathbf y - \bo{C} \hat{\bo{x}})
+\end{equation}
+%
+with measurements $\bo{y}$. With this observer, we want to get as good estimate of the state $\hat{\bo{x}}$ as we can.
+
+\bigskip
+
+Let's define state estimation error as $\varepsilon = \hat{\bo{x}} - \bo{x}$. We can subtract \eqref{eq:LTI} from \eqref{eq:Observer}, to get \emph{observer error dynamics}:
+
+\begin{equation}
+\hat{\dot {\bo{x}}} - \dot {\bo{x}}= 
+\bo{A} \hat{\bo{x}} - \bo{A} \bo{x} + 
+\bo{L}(\mathbf y - \bo{C} \hat{\bo{x}})
+\end{equation}
+
+\begin{equation}
+\dot {\varepsilon}= 
+(\bo{A} - \bo{L} \bo{C}) \varepsilon
+\end{equation}
+
+\end{flushleft}
+\end{frame}
+
+
+
+
+
+\begin{frame}{Observation}
+\framesubtitle{Observer gains}
+\begin{flushleft}
+
+The observer $\dot {\varepsilon}= 
+(\bo{A} - \bo{L} \bo{C}) \varepsilon$ is \emph{stable} (i.e., the state estimation error tends to zero), as long as the following matrix has eigenvalues with negative real parts:
+
+\[
+\bo{A} - 
+\bo{L} \bo{C} < 0
+\]
+
+We need to find $\bo{L}$. Let us observe the key difference between observer design and controller design:
+
+\bigskip
+
+\begin{itemize}
+    \item Controller design: find such $\bo{K}$ that $\bo{A} - \bo{B} \bo{K} < 0$.
+    \item Observer design: find such $\bo{L}$ that: $\bo{A} - \bo{L} \bo{C} < 0$
+\end{itemize}
+
+\bigskip
+
+We have instruments for finding $\bo{K}$, what about $\bo{L}$?
+
+\end{flushleft}
+\end{frame}
+
+
+\begin{frame}{Observer Design}
+\framesubtitle{General case: design via Riccati eq.}
+\begin{flushleft}
+
+In general, we can observe that if $\bo{A} - \bo{L} \bo{C}$ is negative-definite, then $(\bo{A} - 
+\bo{L} \bo{C})^{\top}$ is negative-definite too (by definition of the negative-definiteness). 
+
+\bigskip
+
+Therefore, we can solve the following \emph{dual problem}:
+
+\begin{itemize}
+    \item find such $\bo{L}$ that $\bo{A}^{\top} - 
+\bo{C}^{\top} \bo{L}^{\top} < 0$.
+\end{itemize}
+
+\bigskip
+
+The dual problem is \emph{equivalent} to the control design problem. We can solve it by producing and solving algebraic Riccati equation, as in the LQR formulation. In pseudo-code it can be represented the following way:
+
+\bigskip
+
+$\bo{L}^{\top}$ \texttt{= lqr}($\bo{A}^{\top}$, $\bo{C}^{\top}$, $\mathbf Q$, $\mathbf R$).
+
+where $\mathbf Q$ and $\mathbf R$ are weight  matrices, determining the "sensitivity" or "aggressiveness" of the observer.
+
+
+\end{flushleft}
+\end{frame}
+
+
+
+
+\begin{frame}{Observation and Control}
+\framesubtitle{LTI}
+\begin{flushleft}
+
+Thus we get dynamics+observer combination:
+
+\begin{equation}
+\begin{cases}
+\dot {\bo{x}} = \bo{A} \bo{x} + \bo{B} \bo{u} \\
+\hat{\dot {\bo{x}}} = \bo{A} \hat{\bo{x}} + \bo{B} \mathbf u + \bo{L}(\mathbf y - \bo{C} \hat{\bo{x}})\\
+\bo{y} = \bo{C} \bo{x} \\
+\bo{u} = -\bo{K} (\hat{\bo{x}} - \bo{x}^*(t)) + \bo{u}^*(t)
+\end{cases}
+\end{equation}
+
+\bigskip
+
+where $\bo{A} - \bo{B} \bo{K} < 0$ and $\bo{A}^{\top} - 
+\bo{C}^{\top} \bo{L}^{\top} < 0$.
+
+
+\end{flushleft}
+\end{frame}
+
+
+
+
+\begin{frame}{Observation and Control}
+\framesubtitle{Stability analysis}
+\begin{flushleft}
+
+When we want to stabilize the origin, the dynamics+observer combination can be represented as a single LTI:
+
+\begin{equation}
+\begin{cases}
+\dot {\bo{x}} = \bo{A} \bo{x} + \bo{B} \bo{u} \\
+\hat{\dot {\bo{x}}} = \bo{A} \hat{\bo{x}} + \bo{B} \mathbf u + \bo{L}(\mathbf y - \bo{C} \hat{\bo{x}})\\
+\bo{y} = \bo{C} \bo{x} \\
+\bo{u} = -\bo{K} \hat{\bo{x}}
+\end{cases}
+\end{equation}
+
+In matrix form it becomes:
+
+\begin{equation}
+\begin{bmatrix}
+\dot {\bo{x}} \\
+\hat{\dot {\bo{x}}}
+\end{bmatrix}
+=
+\begin{bmatrix}
+\bo{A} & -\bo{B}\bo{K} \\
+\bo{L}\bo{C} & (\bo{A} - \bo{B}\bo{K}-\bo{L}\bo{C})
+\end{bmatrix}
+\begin{bmatrix}
+\bo{x} \\
+\hat{\bo{x}}
+\end{bmatrix}
+\end{equation}
+
+\bigskip
+
+We can't directly reason about eigenvalues of this matrix. Next slide will show a way to do it with a change of variables.
+
+\end{flushleft}
+\end{frame}
+
+
+
+
+\begin{frame}{Observation and Control}
+\framesubtitle{Change of variables}
+\begin{flushleft}
+
+Let us use the following substitution: $\bo{e} = \bo{x} - \hat{\bo{x}}$, which implies $\hat{\bo{x}} = \bo{x} - \bo{e}$:
+
+Our system had form:
+
+\begin{equation}
+\begin{cases}
+\dot {\bo{x}} = \bo{A} \bo{x} - \bo{B}\bo{K} \hat{\bo{x}} \\
+\hat{\dot {\bo{x}}} = \bo{A} \hat{\bo{x}} - \bo{B}\bo{K} \hat{\bo{x}} + \bo{L}(\bo{C} \bo{x} - \bo{C} \hat{\bo{x}})
+\end{cases}
+\end{equation}
+
+Since $\dot{\bo{e}} = \dot{\bo{x}} - \hat{\dot{\bo{x}}}$, we get:
+%
+\[
+\dot{\bo{e}} = 
+\bo{A} \bo{x} - \bo{B}\bo{K} \hat{\bo{x}} - 
+(\bo{A} \hat{\bo{x}} - \bo{B}\bo{K} \hat{\bo{x}} + \bo{L}(\bo{C} \bo{x} - \bo{C} \hat{\bo{x}}))
+\]
+%
+\[
+\dot{\bo{e}} = 
+\bo{A} (\bo{x} - \hat{\bo{x}})  - \bo{L}\bo{C}(\bo{x} - \hat{\bo{x}})
+\]
+%
+\[
+\dot{\bo{e}} = 
+(\bo{A}  - \bo{L}\bo{C})\bo{e}
+\]
+
+Equation for $\dot {\bo{x}}$ takes form:
+
+\[
+\dot {\bo{x}} = (\bo{A}-\bo{B}\bo{K}) \bo{x} +  \bo{B}\bo{K}\bo{e}
+\]
+
+
+\end{flushleft}
+\end{frame}
+
+
+
+
+\begin{frame}{Observation and Control}
+\framesubtitle{Upper triangular form}
+\begin{flushleft}
+
+Collecting $\dot {\bo{x}}$ and $\dot{\bo{e}}$ we get:
+
+\begin{equation}
+\begin{cases}
+\dot {\bo{x}} = (\bo{A}-\bo{B}\bo{K}) \bo{x} +  \bo{B}\bo{K}\bo{e} \\
+\dot{\bo{e}} = 
+(\bo{A}  - \bo{L}\bo{C})\bo{e}
+\end{cases}
+\end{equation}
+
+In matrix form it becomes:
+
+\begin{equation}
+\begin{bmatrix}
+\dot {\bo{x}} \\
+\dot{\bo{e}}
+\end{bmatrix}
+=
+\begin{bmatrix}
+(\bo{A}-\bo{B}\bo{K}) & \bo{B}\bo{K} \\
+0 & (\bo{A}  - \bo{L}\bo{C})
+\end{bmatrix}
+\begin{bmatrix}
+\bo{x} \\
+\bo{e}
+\end{bmatrix}
+\end{equation}
+
+Eigenvalues of a upper block-triangular matrices equal to the union of the eigenvalues of the blocks on the main diagonal. Hence here, the eigenvalues of the system are equal to the union of eigenvalues of $(\bo{A}-\bo{B}\bo{K})$ and $(\bo{A}  - \bo{L}\bo{C})$. 
+
+\end{flushleft}
+\end{frame}
+
+
+
+\begin{frame}{Observation and Control}
+\framesubtitle{Separation principle}
+\begin{flushleft}
+ 
+Since the eigenvalues of the system are equal to the union of eigenvalues of $(\bo{A}-\bo{B}\bo{K})$ and $(\bo{A}  - \bo{L}\bo{C})$, we can make the following observation:
+
+\bigskip
+
+\begin{alertblock}{Separation principle}
+As long as the observer and the controller are stable independently, the overall system is stable too. This is called \emph{separation principle}.
+\end{alertblock}
+
+\end{flushleft}
+\end{frame}
+
+
+
+
+% \begin{frame}{Observation and Control}
+% \framesubtitle{Affine case}
+% \begin{flushleft}
+
+
+% Affine case is almost the same:
+
+% \begin{equation}
+% \begin{cases}
+% \dot {\bo{x}} = \bo{A} \bo{x} + \bo{B} \bo{u} + \bo{c}\\
+% \hat{\dot {\bo{x}}} = \bo{A} \hat{\bo{x}} + \bo{B} \mathbf u + \bo{L}(\mathbf y - \bo{C} \hat{\bo{x}})  + \bo{c} \\
+% \bo{y} = \bo{C} \bo{x} \\
+% \bo{u} = -\bo{K} (\hat{\bo{x}} - \bo{x}^*(t)) + \bo{u}^*(t)
+% \end{cases}
+% \end{equation}
+
+% \bigskip
+
+% where $\bo{A} - \bo{B} \bo{K} < 0$ and $\bo{A}^{\top} - 
+% \bo{c}^{\top} \bo{L}^{\top} < 0$.
+
+
+% \end{flushleft}
+% \end{frame}
+
+
+
+
+
+\begin{frame}{Thank you!}
+\centerline{Lecture slides are available via Moodle.}
+\bigskip
+\centerline{You can help improve these slides at:}
+\centerline{\href{https://github.com/SergeiSa/Control-Theory-Slides-Spring-2021}{github.com/SergeiSa/Control-Theory-Slides-Spring-2021}}
+
+\includegraphics[width=1.6in]{qrcode.png}
+\bigskip
+
+\centerline{Check Moodle for additional links, videos, textbook suggestions.}
+
+\end{frame}
+
+\end{document}
