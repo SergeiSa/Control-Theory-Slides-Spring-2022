@@ -7,7 +7,7 @@
 \subtitle{Control Theory, Lecture 1}
 \author{by Sergei Savin}
 \centering
-\date{Spring 2021}
+\date{Spring 2022}
 
 
 
@@ -124,7 +124,7 @@ In this course we provide you with learning and practical tasks that require:
 Control Theory, as given here, is focused on:
 
 \begin{enumerate}
-    \item Giving you challenge to simultaneously learn a new concepts, new general and subject-specific math, and new programming tools.
+    \item Giving you a challenge to simultaneously learn a new concepts, new general and subject-specific math, and new programming tools.
     \item Providing you with clear outcomes in terms of \emph{understanding} and ability to \emph{solve well-defined and meaningful real-world problems}.
     \item Being very useful for those who will proceed to work in robotics, automation, self-driving vehicles, drones, etc.
 \end{enumerate}
@@ -194,14 +194,14 @@ We can call this equation (same as any other ODE) a \emph{dynamical system}, and
 The normal form of an \emph{n-th order} ordinary differential equation is:
 
 \begin{equation}
-    \bo{x}^{(n)} = \bo{f} (\bo{x}^{(n-1)}, \bo{x}^{(n-2)}, ..., \ddot{\bo{x}}, \dot{\bo{x}}, \bo{x}, t)
+    x^{(n)} = f (x^{(n-1)}, x^{(n-2)}, ..., \ddot{x}, \dot{x}, X, t)
 \end{equation}
 
-where $\bo{x} = \bo{x}(t)$ is the solution of the equation. Same as before, it is a \emph{dynamical system}, but this time the set $\{ \bo{x}, \ \dot{\bo{x}} \ ..., \ \bo{x}^{(n-1)} \}$ is called the \emph{state} of the dynamical system.
+where $x = x(t)$ is the solution of the equation. Same as before, it is a \emph{dynamical system}, but this time the set $\{ x, \ \dot{x} \ ..., \ x^{(n-1)} \}$ is called the \emph{state} of the dynamical system.
 
 \begin{example}
 \begin{equation}
-    \ddot{x} = cos(2\dot{\bo{x}}) - 10 x + 7 
+    \ddot{x} = cos(2\dot{x}) - 10 x + 7 
 \end{equation}
 \end{example}
 
@@ -377,6 +377,145 @@ z_1 \\ z_2 \\ z_3
 0 \\ 0 \\ b
 \end{bmatrix}
 \end{equation}
+
+
+\end{flushleft}
+\end{frame}
+
+
+
+\begin{frame}{State Space to ODE}
+\centerline{An example of how linear algebra serves}
+\centerline{to solve a seemingly difficult problem}
+\bigskip
+\centerline{(advanced, not going to be on the test)}
+\end{frame}
+
+
+
+
+\begin{frame}{State Space to ODE}
+\framesubtitle{part 1}
+\begin{flushleft}
+
+Consider a system in state-space form:
+
+\begin{equation}
+\label{eq:SS}
+\myvec{\dot x_1}{\dot x_2} = 
+\ma{a_{11}}{a_{12}}{a_{21}}{a_{22}}
+\myvec{x_1}{x_2} \ \ 
+\Longleftrightarrow \ \ 
+\dx{x} = \bo{A} \bo{x} 
+\end{equation}
+
+We want to find such equation 
+
+\begin{equation}
+\label{eq:ODE}
+\ddot{y} + b_2 \dot{y} + b_1 y = 0
+\end{equation}
+
+that there exists a linear transformation of the initial conditions of \eqref{eq:SS} to the initial conditions of \eqref{eq:ODE}, such that the resulting solutions of the initial value problem for both \eqref{eq:SS} and \eqref{eq:ODE} can be transformed into one-another via another linear transformation.
+
+
+\end{flushleft}
+\end{frame}
+
+
+
+\begin{frame}{State Space to ODE}
+\framesubtitle{part 2}
+\begin{flushleft}
+
+We start by recognizing that differentiation is a linear operation, so $\dot{y}(t)$ is a linear transformation of \eqref{eq:ODE} of the solution $y(t)$. 
+
+Next, we know that $y = \bo{w}^\top \bo{x}$ for some $\bo{w} = \myvecT{w_1}{w_2}$:
+
+\begin{equation}
+\dot y = \bo{w}^\top \bo{A} \bo{x}
+\end{equation}
+
+\begin{equation}
+\dot y = \myvecT{(a_{11}w_1 + a_{21}w_2)}{(a_{12}w_1 + a_{22}w_2)}
+\myvec{x_1}{x_2}    
+\end{equation}
+
+Analogous for $\ddot y$:
+
+\begin{equation}
+\ddot y = \bo{w}^\top \bo{A} \bo{A} \bo{x}
+\end{equation}
+
+\end{flushleft}
+\end{frame}
+
+
+
+
+\begin{frame}{State Space to ODE}
+\framesubtitle{part 3}
+\begin{flushleft}
+
+Combining our results we find the linear transformation between the variables $x_1$, $x_2$ and $y$, $\dot y$:
+
+\begin{equation}
+\myvec{y}{\dot y} = 
+\ma{w_1}{w_2}{(a_{11}w_1 + a_{21}w_2)}{(a_{12}w_1 + a_{22}w_2)}
+\myvec{x_1}{x_2}    
+\end{equation}
+
+We can choose any $w_1$, $w_2$, as long as the resulting transformation matrix $\bo{T}$ is not degenerate:
+
+\begin{equation}
+\bo{T} = 
+\ma{w_1}{w_2}{(a_{11}w_1 + a_{21}w_2)}{(a_{12}w_1 + a_{22}w_2)}
+\end{equation}
+
+\end{flushleft}
+\end{frame}
+
+
+
+\begin{frame}{State Space to ODE}
+\framesubtitle{part 4}
+\begin{flushleft}
+
+Remember that:
+
+\begin{equation}
+    \ddot y = \bo{w}^\top \bo{A} \bo{A} \bo{x} \ \ 
+    \Longleftrightarrow \ \ 
+    \ddot{y} = -b_1 y -b_2 \dot{y}  = -\bo{b}^\top \myvec{y}{\dot y}
+\end{equation}
+
+Using the map we found previously, we obtain $\ddot y$ as a linear function of $y$, $\dot y$, with parameters $w_1$, $w_2$:
+
+\begin{equation}
+    \ddot y = \bo{w}^\top \bo{A} \bo{A} \bo{T}^+ \myvec{y}{\dot y}
+\end{equation}
+
+\begin{equation}
+    \bo{b} = -\bo{w}^\top \bo{A} \bo{A} \bo{T}^+
+\end{equation}
+
+From this it is clear how the same can be generalized to higher dimensions.
+
+\end{flushleft}
+\end{frame}
+
+
+
+\begin{frame}{State Space to ODE}
+\framesubtitle{part 5}
+\begin{flushleft}
+
+\textcolor{blue}{\href{https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/blob/main/ColabNotebooks/StateSpace2ODE.ipynb}{Check out the code implementation.}}
+
+\bigskip
+
+
+\centerline{\textcolor{black}{\qrcode[height=2.1in]{https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/blob/main/ColabNotebooks/StateSpace2ODE.ipynb}}}
 
 
 \end{flushleft}
