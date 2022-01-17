@@ -7,7 +7,7 @@
 \subtitle{Control Theory, Lecture 3}
 \author{by Sergei Savin}
 \centering
-\date{Spring 2021}
+\date{\mydate}
 
 
 
@@ -193,7 +193,7 @@ At this point the mathematical meaning of this expression as an ODE is very vagu
 \begin{flushleft}
 
 \begin{example}
-Given ODE: $2\dddot x + 5\dot x - 40 x = 10 u$
+Given ODE: $\dddot 2x + 5\dot x - 40 x = 10 u$
 
 The transfer function for it looks: 
 $x = \frac{10}{2 s^3 + 0 s^2 + 5 s - 40} u$
@@ -201,16 +201,16 @@ $x = \frac{10}{2 s^3 + 0 s^2 + 5 s - 40} u$
 
 
 \begin{example}
-Given ODE: $2\dot x+ 4 x = u$
+Given ODE: $\dot 2x+ 4 x = u$
 
-The transfer function for it looks: $x = \frac{1}{2 s + 4} u$
+The transfer function for it looks: $x = \frac{1}{2 s - 4} u$
 \end{example}
 
 
 \begin{example}
-Given ODE: $3\dddot x + 4x = u$
+Given ODE: $\dddot 3x + 4x = u$
 
-The transfer function for it looks: $x = \frac{1}{3 s^3 + 4} u$
+The transfer function for it looks: $x = \frac{1}{2 s^3 + 4} u$
 \end{example}
 
 \end{flushleft}
@@ -226,7 +226,7 @@ The transfer function for it looks: $x = \frac{1}{3 s^3 + 4} u$
 Consider the following (strange) ODE:
 
 \begin{equation}
-2\ddot x + 3\dot x + 2 x = 10 \dot u - u
+\ddot 2x + 3\dot x + 2 x = 10 \dot u - u
 \end{equation}
 
 Using the differential equation:
@@ -296,8 +296,11 @@ and finally, express $\bo{y}$ out:
 \begin{frame}{Read more}
 
 \begin{itemize}
-\item \href{https://www.cds.caltech.edu/~murray/courses/cds101/fa04/caltech/am04_ch6-3nov04.pdf}{Chapter 6 Transfer Functions}
+\item \bref{https://www.cds.caltech.edu/~murray/courses/cds101/fa04/caltech/am04_ch6-3nov04.pdf}{Chapter 6 Transfer Functions}
 
+\item \bref{https://youtu.be/RJleGwXorUk}{Control Systems Lectures - Transfer Functions, by Brian Douglas}
+
+\item \bref{https://youtu.be/ZGPtPkTft8g}{The Laplace Transform - A Graphical Approach, by Brian Douglas}
 
 \end{itemize}
 
@@ -309,9 +312,12 @@ and finally, express $\bo{y}$ out:
 \centerline{Lecture slides are available via Moodle.}
 \bigskip
 \centerline{You can help improve these slides at:}
-\centerline{\href{https://github.com/SergeiSa/Control-Theory-Slides-Spring-2021}{github.com/SergeiSa/Control-Theory-Slides-Spring-2021}}
+\centerline{\mygit}
 \bigskip
 \centerline{Check Moodle for additional links, videos, textbook suggestions.}
+\bigskip
+
+\centerline{\textcolor{black}{\qrcode[height=1.6in]{https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022}}}
 \end{frame}
 
 \end{document}
