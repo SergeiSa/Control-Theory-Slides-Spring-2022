@@ -85,9 +85,11 @@ http://www3.imperial.ac.uk/pls/portallive/docs/1/31851696.PDF
 
 ## Lecture 3. Transfer functions
 
+* Control Systems Lectures - Transfer Functions, by Brian Douglas: https://youtu.be/RJleGwXorUk
+* The Laplace Transform - A Graphical Approach, by Brian Douglas: https://youtu.be/ZGPtPkTft8g
 * Control Systems Engineering, by Norman S. Nise 
   * chapter 2.2 Laplace Transform Review
-  * chapter 2.3 The Transfer Function (for self-study, in case of interest)
+  * chapter 2.3 The Transfer Function (optional)
 * Cho W. S. To, Introduction to Dynamics and Control in Mechanical Engineering Systems. 
   * 2 Review of Laplace Transforms 
   * 8.3 Transfer Functions
@@ -95,7 +97,13 @@ http://www3.imperial.ac.uk/pls/portallive/docs/1/31851696.PDF
 https://cds.cern.ch/record/1100534/files/p73.pdf
 
 
-## Lecture 4, 5. Stabilizing control
+## Lecture 4. Frequency response, Bode plot
+
+* Control System Lectures - Bode Plots, Introduction, by Brian Douglas: <https://youtu.be/_eh1conN6YM>
+* Bode Plots by Hand, Real Constants, by Brian Douglas: https://youtu.be/CSAp9ooQRT0
+
+
+## Lecture 5. Stabilizing control
 * Control theory by S. Simrock - sections 5, 6 (stability discussed in terms of TF):
 https://cds.cern.ch/record/1100534/files/p73.pdf
 * Module 9: State Feedback Control Design, Lecture Note 1:
