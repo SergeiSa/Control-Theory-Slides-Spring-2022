@@ -28,9 +28,9 @@
     \begin{itemize}
     \item 1st order
     \item n-th order
-    \item ...are what we will study
     \end{itemize}
 \item Changing n-th order ODE to a State-Space form
+\item State-Space to ODE
 \item Read more
 \end{itemize}
 
@@ -194,7 +194,7 @@ We can call this equation (same as any other ODE) a \emph{dynamical system}, and
 The normal form of an \emph{n-th order} ordinary differential equation is:
 
 \begin{equation}
-    x^{(n)} = f (x^{(n-1)}, x^{(n-2)}, ..., \ddot{x}, \dot{x}, X, t)
+    x^{(n)} = f (x^{(n-1)}, x^{(n-2)}, ..., \ddot{x}, \dot{x}, x, t)
 \end{equation}
 
 where $x = x(t)$ is the solution of the equation. Same as before, it is a \emph{dynamical system}, but this time the set $\{ x, \ \dot{x} \ ..., \ x^{(n-1)} \}$ is called the \emph{state} of the dynamical system.
@@ -527,9 +527,9 @@ From this it is clear how the same can be generalized to higher dimensions.
 \begin{frame}{Read more}
 
 \begin{itemize}
-\item State Space Representations of Linear Physical Systems \href{https://lpsa.swarthmore.edu/Representations/SysRepSS.html}{lpsa.swarthmore.edu/Representations/SysRepSS.html}
+\item State Space Representations of Linear Physical Systems \bref{https://lpsa.swarthmore.edu/Representations/SysRepSS.html}{lpsa.swarthmore.edu/Representations/SysRepSS.html}
 
-\item Transformation: Differential Equation to State Space \href{https://lpsa.swarthmore.edu/Representations/SysRepTransformations/DE2SS.html}{lpsa.swarthmore.edu/.../DE2SS.html}
+\item Transformation: Differential Equation to State Space \bref{https://lpsa.swarthmore.edu/Representations/SysRepTransformations/DE2SS.html}{lpsa.swarthmore.edu/.../DE2SS.html}
 \end{itemize}
 
 \end{frame}
@@ -540,9 +540,13 @@ From this it is clear how the same can be generalized to higher dimensions.
 \centerline{Lecture slides are available via Moodle.}
 \bigskip
 \centerline{You can help improve these slides at:}
-\centerline{\href{https://github.com/SergeiSa/Control-Theory-Slides-Spring-2021}{github.com/SergeiSa/Control-Theory-Slides-Spring-2021}}
+\centerline{\mygit}
 \bigskip
 \centerline{Check Moodle for additional links, videos, textbook suggestions.}
+\bigskip
+
+\centerline{\textcolor{black}{\qrcode[height=1.6in]{https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022}}}
+
 \end{frame}
 
 \end{document}
