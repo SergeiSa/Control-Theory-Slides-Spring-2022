@@ -1,7 +1,7 @@
 # Lecture slides
 
 * Lecture 1 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/tree/main/Slides/Introduction
-* Lecture 2 - 
+* Lecture 2 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/tree/main/Slides/Stability
 * Lecture 3 - 
 * Lecture 4 -
 * Lecture 5 - 
