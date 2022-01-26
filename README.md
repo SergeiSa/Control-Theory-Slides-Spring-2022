@@ -20,7 +20,7 @@
 ([playlist](https://www.youtube.com/playlist?list=PLlxR_sEKjSpQ2pmaZeut4ePfMtK_26UPh))
 
 * Lecture 1 - https://youtu.be/HvfmIQutCyI
-* Lecture 2 - 
+* Lecture 2 - https://youtu.be/YmNDcHZpUm8
 * Lecture 4 - 
 * Lecture 5 - 
 * Lecture 6 - 
