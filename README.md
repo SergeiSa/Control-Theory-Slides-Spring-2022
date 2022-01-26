@@ -15,6 +15,24 @@
 * Lecture 12 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2021/tree/main/Slides/Linearization
 * Lecture 13 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2021/tree/main/Slides/Constrained
 
+# Lecture videos (2022 offering)
+
+([playlist](https://www.youtube.com/playlist?list=PLlxR_sEKjSpQ2pmaZeut4ePfMtK_26UPh))
+
+* Lecture 1 - https://youtu.be/HvfmIQutCyI
+* Lecture 2 - 
+* Lecture 4 - 
+* Lecture 5 - 
+* Lecture 6 - 
+* Lecture 7 - 
+* Lecture 8 - 
+* Lecture 10 - 
+* Lecture 11 - 
+* Lecture 12 - 
+* Lecture 13 - 
+* Lecture 14 - 
+
+
 # Lecture videos (2021 offering)
 
 ([playlist](https://www.youtube.com/watch?v=x2cYtqJR-qg&list=PLlxR_sEKjSpTyteBJYJR6WBuAlPineEwz))
