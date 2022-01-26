@@ -32,6 +32,10 @@
 * Lecture 13 - 
 * Lecture 14 - 
 
+# Tutorial videos (2022 offering)
+
+* Tutorial 1 (part 1) - https://youtu.be/OCQ2feevtoY
+* Tutorial 2 - https://youtu.be/DOo4Pe5V2gA
 
 # Lecture videos (2021 offering)
 
