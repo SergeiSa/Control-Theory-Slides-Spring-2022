@@ -194,10 +194,10 @@ We can call this equation (same as any other ODE) a \emph{dynamical system}, and
 The normal form of an \emph{n-th order} ordinary differential equation is:
 
 \begin{equation}
-    x^{(n)} = f (x^{(n-1)}, x^{(n-2)}, ..., \ddot{x}, \dot{x}, x, t)
+	x^{(n)} = f (x^{(n-1)}, x^{(n-2)}, ...\,, \ddot{x}, \dot{x}, x, t)
 \end{equation}
-
-where $x = x(t)$ is the solution of the equation. Same as before, it is a \emph{dynamical system}, but this time the set $\{ x, \ \dot{x} \ ..., \ x^{(n-1)} \}$ is called the \emph{state} of the dynamical system.
+			
+where $x = x(t)$ is the solution of the equation. Same as before, it is a \emph{dynamical system}, but this time the set $\{ x, \ \dot{x} , ...\,,x^{(n-1)} \}$ is called the \emph{state} of the dynamical system.
 
 \begin{example}
 \begin{equation}
@@ -430,7 +430,7 @@ that there exists a linear transformation of the initial conditions of \eqref{eq
 
 We start by recognizing that differentiation is a linear operation, so $\dot{y}(t)$ is a linear transformation of \eqref{eq:ODE} of the solution $y(t)$. 
 
-Next, we know that $y = \bo{w}^\top \bo{x}$ for some $\bo{w} = \myvecT{w_1}{w_2}$:
+Next, we know that $y = \bo{w}^\top \bo{x}$ for some $\bo{w} = \myvec{w_1}{w_2}$:
 
 \begin{equation}
 \dot y = \bo{w}^\top \bo{A} \bo{x}
