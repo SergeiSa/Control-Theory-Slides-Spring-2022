@@ -2,7 +2,7 @@
 
 * Lecture 1 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/tree/main/Slides/Introduction
 * Lecture 2 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/tree/main/Slides/Stability
-* Lecture 3 - 
+* Lecture 3 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/tree/main/Slides/Laplace
 * Lecture 4 -
 * Lecture 5 - 
 * Lecture 5 - 
@@ -59,16 +59,10 @@
 
 # Self-study with Colab
 
-* Lecture 1 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2021/blob/main/ColabNotebooks/practice1_StateSpace_transformation_simulation.ipynb
-* Lecture 2 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2021/blob/main/ColabNotebooks/practice2_LTI_Stability.ipynb
-* Lecture 3 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2021/blob/main/ColabNotebooks/practice3_transfer_functions.ipynb
-
-...
- 
-* Lecture 8 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2021/blob/main/ColabNotebooks/lecture8_LyapunovEq.ipynb
-* Lecture 10 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2021/blob/main/ColabNotebooks/practice_10_observers.ipynb
-* Lecture 11 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2021/blob/main/ColabNotebooks/practice_11_controllability_observability.ipynb
-* Wrap-up    - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2021/blob/main/ColabNotebooks/practice_12_design_example.ipynb
+* Lecture 1 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/blob/main/Practice/Practice_1_ODE_to_StateSpace.ipynb
+* Lecture 2 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/blob/main/Practice/Practice_2_Stability.ipynb
+* Lecture 3 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/blob/main/Practice/Practice_3_Laplace_TransferFunctions.ipynb
+* 
 
 # For contributors
 
