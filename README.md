@@ -55,7 +55,10 @@
 
 # Labs
 
-* Assignment / lab / submission / gradable item \# 2 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2021/blob/main/ColabNotebooks/Lab2_Control2021.pdf
+* Assignment / lab / submission / gradable item \# 1:
+* * PDF: https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/blob/main/Assignment/Assignment1.pdf
+* * Colab: https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/blob/main/Assignment/Assignment1.ipynb
+
 
 # Self-study with Colab
 
