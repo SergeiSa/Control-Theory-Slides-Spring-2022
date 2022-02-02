@@ -32,6 +32,12 @@
 * Lecture 13 - 
 * Lecture 14 - 
 
+# Tutorial slides
+
+* Tutorial 1 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/blob/main/Tutorials/Tutorial_1.pdf
+* Tutorial 2 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/blob/main/Tutorials/Tutorial_2.pdf
+* Tutorial 3 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/tree/main/Tutorials/Tutorial_3
+
 # Tutorial videos (2022 offering)
 
 * Tutorial 1 (part 1) - https://youtu.be/OCQ2feevtoY
