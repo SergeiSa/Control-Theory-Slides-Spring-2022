@@ -1,3 +1,7 @@
+# How to use
+
+This repository contains regularly updated course materials. You can use lecture slides for self study (they are written as lecture notes). Lecture recordings from this and last year offerings are linked below. The links in the Self-study with Colab section are both for self-study and reviewing the practical sessions. Refer to the book and resourses suggestions at the bottom of the page.
+
 # Lecture slides
 
 * Lecture 1 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/tree/main/Slides/Introduction
