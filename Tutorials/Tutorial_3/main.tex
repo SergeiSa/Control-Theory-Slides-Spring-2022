@@ -1,0 +1,407 @@
+\documentclass{beamer}
+
+\input{settings.tex}
+
+
+\title{Laplace Transform and Transfer Functions}
+\subtitle{Control Theory, Tutorial 3}
+% \author{by Sergei Savin}
+\centering
+\date{\mydate}
+
+
+
+\begin{document}
+\maketitle
+
+
+\begin{frame}{Content}
+
+\begin{itemize}
+\item Mechanical systems with inputs
+\item Electric motor current eq.
+\item Electric motor electro-mechanical eq.
+\item Stability
+\item Read more
+\end{itemize}
+
+\end{frame}
+
+
+
+
+\begin{frame}{Mechanical systems with inputs (1)}
+% \framesubtitle{O}
+\begin{flushleft}
+
+Previously we have seen a simple spring-damper system:
+
+\begin{equation}
+    m \ddot x + \mu \dot x + c x = 0
+\end{equation}
+
+where $m$, $\mu$, $c$ are mass, damping coefficient and stiffness coefficient, and $x$ is the position of the mass.
+
+\bigskip
+
+We can add external force $u$, to arrive at the following equation:
+
+\begin{equation}
+    m \ddot x + \mu \dot x + c x = u
+\end{equation}
+
+\end{flushleft}
+\end{frame}
+
+
+\begin{frame}{Mechanical systems with inputs (2)}
+% \framesubtitle{O}
+\begin{flushleft}
+
+We can use Laplace transform to change $\dot x$ to $s x$, and with that original eq. $m \ddot x + \mu \dot x + c x = u$ becomes:
+
+\begin{equation}
+    m s^2 x + \mu s x + c x = u
+\end{equation}
+
+\begin{equation}
+    x = \frac{1}{m s^2 + \mu s + c } u
+\end{equation}
+
+Thus we found the transfer function of the system:
+
+\begin{equation}
+    W(s) = \frac{1}{m s^2 + \mu s + c }
+\end{equation}
+
+\end{flushleft}
+\end{frame}
+
+
+
+
+
+
+\begin{frame}{Electric motor current eq.}
+% \framesubtitle{O}
+\begin{flushleft}
+
+Dynamics of the current in the windings of an electric motor can be described with the following eq.
+
+\begin{equation}
+    L \frac{di}{dt} + R i + C_e \omega = u
+\end{equation}
+
+where $L$, $R$, $C_e$, $\omega$, and $u$ are inductance, resistance, back-EMF (back electromotive force) coefficient, angular velocity of the motor's shaft, and input voltage.
+
+\bigskip
+
+We can transfer this with Laplace transform:
+
+\begin{equation}
+    L s i + R i + C_e \omega = u
+\end{equation}
+
+And we find its transfer function representation:
+
+\begin{equation}
+    i = \frac{1}{L s + R} u
+\end{equation}
+
+Notice that the TF from voltage to current is independent from $C_e \omega$.
+
+\end{flushleft}
+\end{frame}
+
+
+
+
+\begin{frame}{Electric motor electro-mechanical eq. (1)}
+% \framesubtitle{O}
+\begin{flushleft}
+
+Full dynamics equations of a DS motor are
+
+\begin{equation}
+    \begin{cases}
+    L \frac{di}{dt} + R i + C_e \omega = u \\
+    J \frac{d \omega}{dt} = C_\tau i
+    \end{cases}
+\end{equation}
+
+where $C_\tau$ and $J$ are torque coef. and apparent inertial coef. of the rotor's shaft.
+
+\bigskip
+
+We can transfer this with Laplace transform:
+
+\begin{equation}
+    \begin{cases}
+    L s i + R i + C_e \omega = u \\
+    J s \omega = C_\tau i
+    \end{cases}
+\end{equation}
+
+\end{flushleft}
+\end{frame}
+
+
+
+
+
+\begin{frame}{Electric motor electro-mechanical eq. (2)}
+% \framesubtitle{O}
+\begin{flushleft}
+
+We find transfer function from voltage to angular velocity.
+
+\begin{equation}
+    \begin{cases}
+    i = \frac{1}{L s + R} u - \frac{C_e}{L s + R} \omega\\
+    J s \omega = C_\tau i
+    \end{cases}
+\end{equation}
+
+\begin{equation}
+    J s \omega = \frac{C_\tau}{L s + R} u - \frac{C_\tau C_e}{L s + R} \omega
+\end{equation}
+
+\begin{equation}
+    (L s + R) J s \omega = C_\tau u - C_\tau C_e \omega
+\end{equation}
+
+\begin{equation}
+    (J L s^2 + J R s + C_\tau C_e)  \omega = C_\tau u
+\end{equation}
+
+\begin{equation}
+    \omega = \frac{C_\tau}{J L s^2 + J R s + C_\tau C_e} u
+\end{equation}
+
+\end{flushleft}
+\end{frame}
+
+
+
+\begin{frame}{Electric motor electro-mechanical eq. (3)}
+% \framesubtitle{O}
+\begin{flushleft}
+
+Finally, the transfer function is:
+
+\begin{equation}
+    W_{\omega, u}(s) = \frac{C_\tau}{J L s^2 + J R s + C_\tau C_e}
+\end{equation}
+
+Other TFs for this system are:
+
+\begin{equation}
+    W_{\omega, i}(s) = \frac{C_\tau }{J s}
+\end{equation}
+
+\begin{equation}
+    W_{i, u}(s) = 
+    \frac{J s}{J L s^2 + J R s + C_\tau C_e} u
+\end{equation}
+
+
+\end{flushleft}
+\end{frame}
+
+
+
+
+
+
+
+
+\begin{frame}{Stability (1)}
+% \framesubtitle{O}
+\begin{flushleft}
+
+Observing eq. $m \ddot y + \mu_0 \dot y + c_0 y = 0$ we can tell that it is stable if (sufficient but not necessary condition) $m > 0$, $\mu > 0$, and $c > 0$ - this follows from the physics of the system.
+
+\bigskip
+
+A more principled approach is to find eigenvalues of the linear system. We start by dividing the equation by $m$:
+
+\begin{equation}
+    \ddot y + \mu \dot y + c y = 0
+\end{equation}
+
+where $\mu = \mu_0 / m$ and $c = c_0 / m$. Defining $x_1 = y$ and $x_2 = \dot y$, the system can be equivalently represented as:
+
+\begin{equation}
+    \begin{bmatrix}
+    \dot x_1 \\ \dot x_2
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+    0 & 1 \\
+    -c & -\mu
+    \end{bmatrix} 
+    \begin{bmatrix}
+    x_1 \\ x_2
+    \end{bmatrix}   
+\end{equation}
+
+
+\end{flushleft}
+\end{frame}
+
+
+
+\begin{frame}{Stability (2)}
+% \framesubtitle{O}
+\begin{flushleft}
+
+With linear system 
+$
+    \begin{bmatrix}
+    \dot x_1 \\ \dot x_2
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+    0 & 1 \\
+    -c & -\mu
+    \end{bmatrix} 
+    \begin{bmatrix}
+    x_1 \\ x_2
+    \end{bmatrix}   
+$, we need to find its eigenvalues. We know that there is a formula for eigenvalues based on trace and determinant:
+
+\begin{equation}
+    \lambda = \frac{T \pm \sqrt{T^2 - 4D} }{2}
+\end{equation}
+
+where $T$ is trace and $D$ is the determinant.
+
+\bigskip
+
+In our case $T = -\mu$ and $D = c$, and eigenvalues are:
+
+\begin{equation}
+    \lambda = \frac{-\mu \pm \sqrt{\mu^2 - 4c} }{2}
+\end{equation}
+
+
+\end{flushleft}
+\end{frame}
+
+
+
+\begin{frame}{Stability (3)}
+% \framesubtitle{O}
+\begin{flushleft}
+
+Lets analyse eigenvalues $\lambda = \frac{-\mu \pm \sqrt{\mu^2 - 4c} }{2}$. We can see that if $\mu \geq 0$ and $c \geq 0$, there are only two scenarios: 
+
+\begin{enumerate}
+    \item $\mu^2 - 4c \geq 0$, in which case $\sqrt{\mu^2 - 4c} \leq \mu$, the eigenvalues are purely real and negative.
+    \item $\mu^2 - 4c < 0$, in which case $\sqrt{\mu^2 - 4c}$ is a purely imaginary number, the eigenvalues are complex with negative real parts.
+\end{enumerate}
+
+If $\mu \geq 0$ and $c = 0$, $\lambda_1 = -\mu$, $\lambda_2 = 0$, hence the system is marginally stable.
+
+\end{flushleft}
+\end{frame}
+
+
+
+\begin{frame}{Stability (4)}
+% \framesubtitle{O}
+\begin{flushleft}
+
+
+If $\mu \geq 0$ and $c < 0$, then $\sqrt{\mu^2 - 4c} \geq \mu$, and eigenvalues are purely real and one of them is positive, the system is unstable. If $\mu < 0$ and $c < 0$ at least one of the eigenvalues is still positive.
+
+\bigskip
+
+If $\mu < 0$ and $c \geq 0$, then again there are only two scenarios: 
+
+\begin{enumerate}
+    \item $\mu^2 - 4c \geq 0$, in which case $\sqrt{\mu^2 - 4c} \leq \mu$, the eigenvalues are purely real and positive.
+    \item $\mu^2 - 4c < 0$, in which case $\sqrt{\mu^2 - 4c}$ is a purely imaginary number, the eigenvalues are complex with positive real parts.
+\end{enumerate}
+
+\begin{definition}
+If $\mu \geq 0$ and $c \geq 0$ the system is stable, if $\mu < 0$ or $c < 0$ it is unstable.
+\end{definition}
+
+\end{flushleft}
+\end{frame}
+
+
+
+
+\begin{frame}{Stability (5)}
+% \framesubtitle{O}
+\begin{flushleft}
+
+Going back to the eq. $\ddot y + \mu \dot y + c y = 0$ we can write characteristic eq. for it:
+
+\begin{equation}
+    k^2 y + \mu k + c = 0
+\end{equation}
+
+Its roots are given by the formula:
+
+\begin{equation}
+    k = \frac{-\mu \pm \sqrt{\mu^2 - 4c} }{2}
+\end{equation}
+
+As we can see, it is exactly the same as the determinant-trace formula.
+
+
+\end{flushleft}
+\end{frame}
+
+
+
+\begin{frame}{Stability (6)}
+% \framesubtitle{O}
+\begin{flushleft}
+
+Now, lets consider the transfer function:
+
+\begin{equation}
+    W(s) = \frac{1}{s^2 + \mu s + c }
+\end{equation}
+
+Notice that its determinant is exactly the same as the characteristic polynomial. This illustrates the connection between the stability criteria for transfer function and other representations.
+
+
+\end{flushleft}
+\end{frame}
+
+
+
+
+
+
+% \begin{frame}{Read more}
+
+% \begin{itemize}
+% \item ??
+
+% \item ??
+
+% \end{itemize}
+
+% \end{frame}
+
+
+
+\begin{frame}{Thank you!}
+\centerline{Lecture slides are available via Moodle.}
+\bigskip
+\centerline{You can help improve these slides at:}
+\centerline{\mygit}
+\bigskip
+\centerline{Check Moodle for additional links, videos, textbook suggestions.}
+\bigskip
+
+\centerline{\textcolor{black}{\qrcode[height=1.6in]{https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022}}}
+\end{frame}
+
+\end{document}
