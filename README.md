@@ -7,7 +7,7 @@ This repository contains regularly updated course materials. You can use lecture
 * Lecture 1 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/tree/main/Slides/Introduction
 * Lecture 2 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/tree/main/Slides/Stability
 * Lecture 3 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/tree/main/Slides/Laplace
-* Lecture 4 -
+* Lecture 4 - 
 * Lecture 5 - 
 * Lecture 5 - 
 * Lecture 6 - 
@@ -23,9 +23,10 @@ This repository contains regularly updated course materials. You can use lecture
 
 ([playlist](https://www.youtube.com/playlist?list=PLlxR_sEKjSpQ2pmaZeut4ePfMtK_26UPh))
 
-* Lecture 1 - https://youtu.be/HvfmIQutCyI
-* Lecture 2 - https://youtu.be/YmNDcHZpUm8
-* Lecture 4 - 
+* Lecture 1 (State Space) - https://youtu.be/HvfmIQutCyI
+* Lecture 2 (Stability) - https://youtu.be/YmNDcHZpUm8
+* Lecture 3 (Laplace, Transfer functions) - https://youtu.be/I-UykNTLWoQ
+* Lecture 4 (Bode) - https://youtu.be/E5uhziFTVrk
 * Lecture 5 - 
 * Lecture 6 - 
 * Lecture 7 - 
@@ -41,11 +42,14 @@ This repository contains regularly updated course materials. You can use lecture
 * Tutorial 1 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/blob/main/Tutorials/Tutorial_1.pdf
 * Tutorial 2 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/blob/main/Tutorials/Tutorial_2.pdf
 * Tutorial 3 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/tree/main/Tutorials/Tutorial_3
+* Tutorial 4 - 
 
 # Tutorial videos (2022 offering)
 
 * Tutorial 1 (part 1) - https://youtu.be/OCQ2feevtoY
 * Tutorial 2 - https://youtu.be/DOo4Pe5V2gA
+* Tutorial 3 - https://youtu.be/tAubn9MKIW0
+* Tutorial 4 - https://youtu.be/usqDiJLELX8
 
 # Lecture videos (2021 offering)
 
