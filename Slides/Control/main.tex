@@ -4,10 +4,10 @@
 
 
 \title{Stabilizing Control}
-\subtitle{Control Theory, Lecture 4-5}
+\subtitle{Control Theory, Lecture 5}
 \author{by Sergei Savin}
 \centering
-\date{Spring 2021}
+\date{\mydate}
 
 
 
@@ -20,7 +20,7 @@
 \begin{itemize}
 \item Changing stability
 \item Stabilizing control
-\item Linear control
+\item Linear control: Closed-loop system, 
 \item Affine control
 \item Error dynamics
 \item Affine trajectory tracking
@@ -47,7 +47,7 @@ Here are two LTIs:
     \dot{x} = 2 x + u
 \end{equation}
 
-First one is unstable. Second one - we don't know until we know what $u$ is.
+First one is autonomous and unstable. Second one is not autonomous, and we won't know whether or not it is stable, until we know what $u$ is.
 
 \bigskip
 
@@ -89,7 +89,7 @@ This is true for both linear and non-linear systems. But for linear systems we c
 
 
 \begin{frame}{Linear control}
-\framesubtitle{Part 1}
+\framesubtitle{Closed-loop system}
 \begin{flushleft}
 
 Consider an LTI system:
@@ -98,7 +98,7 @@ Consider an LTI system:
     \dot{\bo{x}} = \bo{A}\bo{x} + \bo{B}\bo{u}
 \end{equation}
 
-and let us chose control as a linear function of the \emph{state} $x$:
+and let us chose \emph{control as a linear function of the state} $x$:
 
 \begin{equation}
     \bo{u} = -\bo{K}\bo{x}
@@ -114,7 +114,7 @@ Thus, we know how the system is going to look when the control is applied:
     \dot{\bo{x}} = (\bo{A} - \bo{B}\bo{K})\bo{x}
 \end{equation}
 
-Note that \eqref{eq:closed_loop} is an autonomous system. We call this (a system that was not autonomous, but became one after substituting control law) a \emph{closed loop} system.
+Note that \eqref{eq:closed_loop} is an autonomous system. We call this a \emph{closed loop} system.
 
 \end{flushleft}
 \end{frame}
@@ -122,19 +122,22 @@ Note that \eqref{eq:closed_loop} is an autonomous system. We call this (a system
 
 
 \begin{frame}{Linear control}
-\framesubtitle{Part 2}
+%\framesubtitle{Stability of the closed-loop system}
 \begin{flushleft}
 
-Observing the system $\dot{\bo{x}} = (\bo{A} - \bo{B}\bo{K})\bo{x}$ we obtained, we can notice that we already have the tools to analyse its stability. Namely:
+Observing the system $\dot{\bo{x}} = (\bo{A} - \bo{B}\bo{K})\bo{x}$ we obtained, we can notice that we already have the tools to analyse its stability:
 
 \begin{block}{Stability condition for LTI closed-loop system}
-The real parts of the eigenvalues of the matrix $(\bo{A} - \bo{B}\bo{K})$ should be negative for asymptotic stability, or non-positive for stability in the sense of Lyapunov
+The real parts of the eigenvalues of the matrix $(\bo{A} - \bo{B}\bo{K})$ should be negative for asymptotic stability, or non-positive for stability in the sense of Lyapunov.
 \end{block}
 
+\begin{block}{Hurwitz matrix}
+	If square matrix $\bo{M}$ has eigenvalues with strictly negative real parts, it is called Hurwitz. We will denote it as $\bo{M} \in \mathcal{H}$.
+\end{block}
 
-\bigskip
+%\bigskip
 
-So, all you need to do is to find such $\bo{K}$ that $(\bo{A} - \bo{B}\bo{K})$ has eigenvalues with negative real parts, and you made a stable closed-loop system!
+So, all you need to do is to find such $\bo{K}$ that $(\bo{A} - \bo{B}\bo{K})$ is Hurwitz, and you made a an asymptotically stable closed-loop system!
 
 \end{flushleft}
 \end{frame}
@@ -198,7 +201,7 @@ And as long as we can choose such $\bo{u}^*$ that $\bo{B}\bo{u}^* = -\bo{c}$, we
 \bigskip
 
 \begin{block}{Existence of the stabilizing control}
-Notice that same as it is possible that there exists no such $\bo{K}$ that $\dot{\bo{x}} = (\bo{A} - \bo{B}\bo{K})\bo{x}$ is stable, same there might exist no such $\bo{u}^*$ that $\bo{B}\bo{u}^* = -\bo{c}$
+Same as it is possible that there exists no such $\bo{K}$ that $\dot{\bo{x}} = (\bo{A} - \bo{B}\bo{K})\bo{x}$ is stable, there might exist no such $\bo{u}^*$ that $\bo{B}\bo{u}^* = -\bo{c}$
 \end{block}
 
 \end{flushleft}
@@ -342,7 +345,7 @@ This control law $\bo{u} = -\bo{K}(\bo{x} - \bo{x}^*) + \bo{u}^*$ can be thought
 \framesubtitle{Part 1}
 \begin{flushleft}
 
-What we just did - stabilization of the arbitrary trajectory $\bo{x}^* = \bo{x}^*(t)$ - is also called \emph{trajectory tracking control}, or \emph{trajectory stabilization}. The solution to stabilize is called \emph{trajectory}.
+What we just did - stabilization of the arbitrary trajectory $\bo{x}^* = \bo{x}^*(t)$ - is also called \emph{trajectory tracking control}, or \emph{trajectory stabilization}. The solution we stabilized is called \emph{trajectory}.
 
 \bigskip
 
@@ -391,121 +394,124 @@ where $\bo{v} = \bo{u} - \bo{u}^*$, which we already saw before. The only differ
 
 
 \begin{frame}{Point-to-point control}
-\framesubtitle{Part 1}
+%\framesubtitle{Part 1}
 \begin{flushleft}
 
-What if we want to move our system $\dot{\bo{x}} = \bo{A}\bo{x} + \bo{B}\bo{u}$ from initial condition to some desired state $\bo{x}^*$. The difference is that we do not have a solution that we used before, only the desired \emph{node} is given. This can be called \emph{point-to-point control}
+What if we want to move our system $\dot{\bo{x}} = \bo{A}\bo{x} + \bo{B}\bo{u}$ from initial condition to some desired state $\bo{x}^*$. This can be called \emph{point-to-point control}.
 
 \bigskip
 
-Let us start by giving the form of the control law:
+This is the same as trajectory control with $\bo{x}^* = \text{const}$ and $\dot{\bo{x}}^* = 0$.
 
-\begin{equation}
-    \bo{u} = -\bo{K}(\bo{x} - \bo{x}^*) + \bo{u}^*
-\end{equation}
 
-And thus we can re-write the dynamics as:
-
-\begin{equation}
-\label{eq:dynamics_point_to_point}
-    \dot{\bo{x}} = \bo{A}\bo{x} - \bo{B}\bo{K}(\bo{x} - \bo{x}^*) + \bo{B}\bo{u}^*
-\end{equation}
+%Let us start by giving the form of the control law:
+%
+%\begin{equation}
+%    \bo{u} = -\bo{K}(\bo{x} - \bo{x}^*) + \bo{u}^*
+%\end{equation}
+%
+%And thus we can re-write the dynamics as:
+%
+%\begin{equation}
+%\label{eq:dynamics_point_to_point}
+%    \dot{\bo{x}} = \bo{A}\bo{x} - \bo{B}\bo{K}(\bo{x} - \bo{x}^*) + \bo{B}\bo{u}^*
+%\end{equation}
 
 \end{flushleft}
 \end{frame}
 
 
+%
+%
+%\begin{frame}{Point-to-point control}
+%\framesubtitle{Part 2}
+%\begin{flushleft}
+%
+%Let us consider how the system $\dot{\bo{x}} = \bo{A}\bo{x} - \bo{B}\bo{K}(\bo{x} - \bo{x}^*) + \bo{B}\bo{u}^*$ will behave at the point $\bo{x}^*$. We know that $\dot{\bo{x}}^* = 0$:
+%
+%\begin{equation}
+%    0 = \bo{A}\bo{x}^* - \bo{B}\bo{K}(\bo{x}^* - \bo{x}^*) + \bo{B}\bo{u}^*
+%\end{equation}
+%\begin{equation}
+%\label{eq:solution_point_to_point}
+%    0 = \bo{A}\bo{x}^* + \bo{B}\bo{u}^*
+%\end{equation}
+%
+%which we saw before. It provides us solution to the forward dynamics:
+%
+%\begin{equation}
+%    \bo{u}^* = -\bo{B}^+\bo{A}\bo{x}^*
+%\end{equation}
+%
+%Subtracting solution \eqref{eq:solution_point_to_point} from the original dynamics \eqref{eq:dynamics_point_to_point}, we get familiar error dynamics $\dot{\bo{e}} = (\bo{A} - \bo{B}\bo{K})\bo{e}$.
+%
+%\end{flushleft}
+%\end{frame}
 
 
-\begin{frame}{Point-to-point control}
-\framesubtitle{Part 2}
-\begin{flushleft}
-
-Let us consider how the system $\dot{\bo{x}} = \bo{A}\bo{x} - \bo{B}\bo{K}(\bo{x} - \bo{x}^*) + \bo{B}\bo{u}^*$ will behave at the point $\bo{x}^*$. We know that $\dot{\bo{x}}^* = 0$:
-
-\begin{equation}
-    0 = \bo{A}\bo{x}^* - \bo{B}\bo{K}(\bo{x}^* - \bo{x}^*) + \bo{B}\bo{u}^*
-\end{equation}
-\begin{equation}
-\label{eq:solution_point_to_point}
-    0 = \bo{A}\bo{x}^* + \bo{B}\bo{u}^*
-\end{equation}
-
-which we saw before. It provides us solution to the forward dynamics:
-
-\begin{equation}
-    \bo{u}^* = -\bo{B}^+\bo{A}\bo{x}^*
-\end{equation}
-
-Subtracting solution \eqref{eq:solution_point_to_point} from the original dynamics \eqref{eq:dynamics_point_to_point}, we get familiar error dynamics $\dot{\bo{e}} = (\bo{A} - \bo{B}\bo{K})\bo{e}$.
-
-\end{flushleft}
-\end{frame}
-
-
-
-
-\begin{frame}{Pure state feedback}
-\framesubtitle{Part 1}
-\begin{flushleft}
-
-Given $\dot{\bo{x}} = \bo{A}\bo{x} + \bo{B}\bo{u}$ and the desired state $\bo{x}^*$ we can do a point-to-point control with the following \emph{pure state feedback control}:
-
-\begin{equation}
-    \bo{u} = -\bo{K}\bo{x} + \bo{u}^*
-\end{equation}
-
-We can re-write the dynamics as:
-
-\begin{equation}
-    \dot{\bo{x}} = \bo{A}\bo{x} - \bo{B}\bo{K}\bo{x} + \bo{B}\bo{u}^*
-\end{equation}
-
-As before, we know that at the node,  $\dot{\bo{x}}^* = 0$:
-
-\begin{equation}
-    0 = (\bo{A} - \bo{B}\bo{K})\bo{x}^* + \bo{B}\bo{u}^*
-\end{equation}
-
-Thus we can solve for $\bo{u}^*$
-
-\begin{equation}
-    \bo{u}^* = -\bo{B}^+(\bo{A} - \bo{B}\bo{K})\bo{x}^*
-\end{equation}
-
-\end{flushleft}
-\end{frame}
-
-
-
-\begin{frame}{Pure state feedback}
-\framesubtitle{Part 2}
-\begin{flushleft}
-
-The rest is the same. Error dynamics is $\dot{\bo{e}} = (\bo{A} - \bo{B}\bo{K})\bo{e}$.
-
-\bigskip
-
-Note that when $\bo{u} = -\bo{K}\bo{x} + \bo{u}^*$, we got feed-forward control in the form:
-
-\[
-    \bo{u}^* = -\bo{B}^+(\bo{A} - \bo{B}\bo{K})\bo{x}^*
-\]
-
-\bigskip
-
-But when we had $\bo{u} = -\bo{K}(\bo{x} - \bo{x}^*) + \bo{u}^*$, our feed-forward control was
-
-\[
-    \bo{u}^* = -\bo{B}^+\bo{A}\bo{x}^*
-\]
-
-\bigskip
-
-The difference has to do with how the two control methods behave at the node.
-
-\end{flushleft}
-\end{frame}
+%
+%
+%\begin{frame}{Pure state feedback}
+%\framesubtitle{Part 1}
+%\begin{flushleft}
+%
+%Given $\dot{\bo{x}} = \bo{A}\bo{x} + \bo{B}\bo{u}$ and the desired state $\bo{x}^*$ we can do a point-to-point control with the following \emph{pure state feedback control}:
+%
+%\begin{equation}
+%    \bo{u} = -\bo{K}\bo{x} + \bo{u}^*
+%\end{equation}
+%
+%We can re-write the dynamics as:
+%
+%\begin{equation}
+%    \dot{\bo{x}} = \bo{A}\bo{x} - \bo{B}\bo{K}\bo{x} + \bo{B}\bo{u}^*
+%\end{equation}
+%
+%As before, we know that at the node,  $\dot{\bo{x}}^* = 0$:
+%
+%\begin{equation}
+%    0 = (\bo{A} - \bo{B}\bo{K})\bo{x}^* + \bo{B}\bo{u}^*
+%\end{equation}
+%
+%Thus we can solve for $\bo{u}^*$
+%
+%\begin{equation}
+%    \bo{u}^* = -\bo{B}^+(\bo{A} - \bo{B}\bo{K})\bo{x}^*
+%\end{equation}
+%
+%\end{flushleft}
+%\end{frame}
+%
+%
+%
+%\begin{frame}{Pure state feedback}
+%\framesubtitle{Part 2}
+%\begin{flushleft}
+%
+%The rest is the same. Error dynamics is $\dot{\bo{e}} = (\bo{A} - \bo{B}\bo{K})\bo{e}$.
+%
+%\bigskip
+%
+%Note that when $\bo{u} = -\bo{K}\bo{x} + \bo{u}^*$, we got feed-forward control in the form:
+%
+%\[
+%    \bo{u}^* = -\bo{B}^+(\bo{A} - \bo{B}\bo{K})\bo{x}^*
+%\]
+%
+%\bigskip
+%
+%But when we had $\bo{u} = -\bo{K}(\bo{x} - \bo{x}^*) + \bo{u}^*$, our feed-forward control was
+%
+%\[
+%    \bo{u}^* = -\bo{B}^+\bo{A}\bo{x}^*
+%\]
+%
+%\bigskip
+%
+%The difference has to do with how the two control methods behave at the node.
+%
+%\end{flushleft}
+%\end{frame}
 
 
 
@@ -514,8 +520,8 @@ The difference has to do with how the two control methods behave at the node.
 \begin{frame}{Read more}
 
 \begin{itemize}
-\item Richard M. Murray Control and Dynamical Systems California Institute of Technology \href{http://www.cds.caltech.edu/~murray/books/AM08/pdf/obc-trajgen_03Jan10.pdf}{Optimization-Based Control}
-\item \href{https://apmonitor.com/pdc/index.php/Main/ModelSimulation}{Dynamic Simulation in Python}
+\item Richard M. Murray Control and Dynamical Systems California Institute of Technology \bref{http://www.cds.caltech.edu/~murray/books/AM08/pdf/obc-trajgen_03Jan10.pdf}{Optimization-Based Control}
+\item \bref{https://apmonitor.com/pdc/index.php/Main/ModelSimulation}{Dynamic Simulation in Python}
 
 
 \end{itemize}

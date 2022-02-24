@@ -4,10 +4,10 @@
 
 
 \title{Discrete Dynamics}
-\subtitle{Control Theory, Lecture 5 (continuation)}
+\subtitle{Control Theory, Lecture 6}
 \author{by Sergei Savin}
 \centering
-\date{Spring 2021}
+\date{\mydate}
 
 
 
@@ -70,39 +70,161 @@ The affine control for this system can be given as:
 
 
 
+
 \begin{frame}{Stability of the Discrete Dynamics}
-\framesubtitle{Part 1}
-\begin{flushleft}
-
-Let us consider stability of the discrete dynamical system $\bo{x}_{i+1} = \bo{A}\bo{x}_i$.
-
-\bigskip
-
-We will attack the problem in the same way as before, first assuming that $\bo{A} = \bo{V}^{-1} \bo{D} \bo{V}$, where $\bo{D}$ is a diagonal matrix with eigenvalues of $\bo{A}$ on its diagonal:
-
-\begin{equation}
-    \bo{x}_{i+1} = \bo{V}^{-1} \bo{D} \bo{V}\bo{x}_i
-\end{equation}
-
-Multiplying both sides of the equation by $\bo{V}$ and defining $\bo{z}_i = \bo{V}\bo{x}_i$, we get:
-
-\begin{equation}
-    \bo{V}\bo{x}_{i+1} = \bo{V}\bo{V}^{-1} \bo{D} \bo{V}\bo{x}_i
-\end{equation}
-\begin{equation}
-    \bo{z}_{i+1} = \bo{D} \bo{z}_i
-\end{equation}
-
-
-\end{flushleft}
+	\framesubtitle{Real eigenvalues}
+	\begin{flushleft}
+		
+		Let us consider stability of the discrete dynamical system where matrix $\bo{A}$ has purely real eigenvalues:
+		
+		\begin{equation}
+			\bo{x}_{i+1} = \bo{A}\bo{x}_i
+		\end{equation}		
+		
+		With eigendecomposition $\bo{A} = \bo{V}^{-1} \bo{D} \bo{V}$ (where $\bo{D}$ is a diagonal matrix with eigenvalues $\lambda_j$ of $\bo{A}$ on its diagonal)  and introducing notation $\bo{z}_i = \bo{V}\bo{x}_i$ we get:
+		
+		\begin{equation}
+			\bo{x}_{i+1} = \bo{V}^{-1} \bo{D} \bo{V}\bo{x}_i
+		\end{equation}
+		\begin{equation}
+			\bo{z}_{i+1} =  \bo{D} \bo{z}_i
+		\end{equation}
+		
+		Meaning that the dynamics became a system of independent scalar equations $z_{j, i+1} =  \lambda_j z_{j, i}$. 
+		
+		
+	\end{flushleft}
 \end{frame}
 
 
+
+
 \begin{frame}{Stability of the Discrete Dynamics}
-\framesubtitle{Part 2}
+	\framesubtitle{Real eigenvalues}
+	\begin{flushleft}
+		
+		Thus, with $z_{j, i+1} =  \lambda_j z_{j, i}$ we can find now the absolute value of the scalars $z_{j}$ will dwindle with time iff $|\lambda_j| < 1$:
+		
+		\begin{equation}
+			\left| \frac{z_{j, i+1}}{z_{j, i}} \right | =   | \lambda_j |
+		\end{equation}
+		 
+		
+	\end{flushleft}
+\end{frame}
+
+
+
+\begin{frame}{Stability of the Discrete Dynamics}
+	\framesubtitle{2x2 system}
+	\begin{flushleft}
+		
+		Let us consider stability of the discrete dynamical system with a 2-by-2 matrix $\bo{A}$:
+		
+		\begin{equation}
+			\begin{bmatrix}
+				x_{1, i+1} \\ x_{2, i+1}
+			\end{bmatrix}
+			= 
+			\begin{bmatrix}
+				\alpha & -\beta \\ \beta & \alpha
+			\end{bmatrix}     
+			\begin{bmatrix}
+				x_{1, i} \\ x_{2, i}
+			\end{bmatrix}
+		\end{equation}	
+		
+		Let us find norms of $\begin{bmatrix}
+			x_{1, i+1} \\ x_{2, i+1}
+		\end{bmatrix}$ and $\begin{bmatrix}
+		x_{1, i} \\ x_{2, i}
+	\end{bmatrix}$:
+
+
+		\begin{equation}
+		\left | \left|
+		\begin{bmatrix}
+			x_{1, i} \\ x_{2, i}
+		\end{bmatrix}
+		\right | \right|^2
+			= 
+	 	x_{1, i}^2 + x_{2, i}^2
+		\end{equation}
+
+		\begin{equation}
+			\left | \left|
+			\begin{bmatrix}
+				x_{1, i+1} \\ x_{2, i+1}
+			\end{bmatrix}
+			\right | \right|^2
+			= 
+			(\alpha^2 + \beta^2) (x_{1, i}^2 + x_{2, i}^2)
+		\end{equation}
+		
+		
+	\end{flushleft}
+\end{frame}
+
+
+
+\begin{frame}{Stability of the Discrete Dynamics}
+	\framesubtitle{2x2 system}
+	\begin{flushleft}
+		
+		We can find the ratio of the norms of $\begin{bmatrix}
+			x_{1, i+1} \\ x_{2, i+1}
+		\end{bmatrix}$ and $\begin{bmatrix}
+			x_{1, i} \\ x_{2, i}
+		\end{bmatrix}$: 
+		
+		
+		
+		\begin{equation}
+			\left | \left|
+			\begin{bmatrix}
+				x_{1, i+1} \\ x_{2, i+1}
+			\end{bmatrix}
+			\right | \right|^2 
+			/ 
+			\left | \left|
+			\begin{bmatrix}
+				x_{1, i} \\ x_{2, i}
+			\end{bmatrix}
+			\right | \right|^2
+			= 
+			\alpha^2 + \beta^2
+		\end{equation}
+		
+		Remembering that eigenvalues of the system are $\lambda  = \alpha \pm j\beta$, we can rewrite teh expression above as:
+		
+		\begin{equation}
+	\left | \left|
+	\begin{bmatrix}
+		x_{1, i+1} \\ x_{2, i+1}
+	\end{bmatrix}
+	\right | \right|^2 
+	/ 
+	\left | \left|
+	\begin{bmatrix}
+		x_{1, i} \\ x_{2, i}
+	\end{bmatrix}
+	\right | \right|^2
+	= 
+	| \lambda |
+		\end{equation}		
+		
+		We can see that the norm of the variable $\bo{x}$ will dwindle with time iff $|\lambda| < 1$.
+		
+	\end{flushleft}
+\end{frame}
+
+
+
+
+\begin{frame}{Stability of the Discrete Dynamics}
 \begin{flushleft}
 
-Now, considering $\bo{z}_{i+1} = \bo{D} \bo{z}_i$ we can see that the norm of the state $\bo{z}_i$ would not increase iff the norm of the elements of $\bo{D}$ (which as eigenvalues of $\bo{A}$) are smaller than 1.
+General stability criterion is given below:
 
 \bigskip
 
