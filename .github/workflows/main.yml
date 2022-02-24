@@ -35,6 +35,12 @@ jobs:
           root_file: main.tex
           working_directory: Slides/Laplace/
 
+      - name: Compile LaTeX document Bode
+        uses: xu-cheng/latex-action@master
+        with:
+          root_file: main.tex
+          working_directory: Slides/Bode/
+
       - name: Compile LaTeX document Control
         uses: xu-cheng/latex-action@master
         with:
@@ -106,19 +112,23 @@ jobs:
           name: Introduction.pdf
           path: Slides/Introduction/main.pdf
 
-
       - name: Save Stability artifact
         uses: actions/upload-artifact@v1
         with:
           name: Stability.pdf
           path: Slides/Stability/main.pdf
 
-
       - name: Save Laplace artifact
         uses: actions/upload-artifact@v1
         with:
           name: Laplace.pdf
           path: Slides/Laplace/main.pdf
+
+      - name: Save Bode artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: Bode.pdf
+          path: Slides/Bode/main.pdf
 
       - name: Save Control artifact
         uses: actions/upload-artifact@v1
@@ -182,7 +192,6 @@ jobs:
 
 
 
-
       - name: Update compiled PDFs in git repository
         if: github.event.pull_request.merged == true || github.event_name == 'push'
         run: |
@@ -191,6 +200,7 @@ jobs:
           git add Slides/Introduction/main.pdf
           git add Slides/Stability/main.pdf
           git add Slides/Laplace/main.pdf
+          git add Slides/Bode/main.pdf
           git add Slides/Control/main.pdf
           git add Slides/Discrete/main.pdf
           git add Slides/NullRow/main.pdf

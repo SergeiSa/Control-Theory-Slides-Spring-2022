@@ -1,0 +1,241 @@
+\documentclass{beamer}
+
+\input{settings.tex}
+
+
+\title{Frequency response, Bode}
+\subtitle{Control Theory, Lecture 4}
+\author{by Sergei Savin}
+\centering
+\date{\mydate}
+
+
+
+\begin{document}
+\maketitle
+
+
+\begin{frame}{Content}
+
+\begin{itemize}
+\item Laplace and Fourier transforms
+\item Laplace and steady state solution
+\item Bode plot
+\item Bode plot - example
+\item Stability margins
+\item Code example
+% \item Stability of autonomous LTI
+%     \begin{itemize}
+%     \item Example: real eigenvalues
+%     \item Example: complex eigenvalues
+%     \item General case
+%     \item Illustration
+%     \end{itemize}
+% \item Read more
+\end{itemize}
+
+\end{frame}
+
+
+
+\begin{frame}{Laplace and Fourier transforms}
+% \framesubtitle{O}
+\begin{flushleft}
+
+\begin{itemize}
+    \item \emph{Fourier series} can be seen as representing a periodic function as a sum of harmonics (sines and cosines). These sines and cosines can be thought of as forming a basis in a linear space. The coefficients of the series can be thought of as a discrete spectrum of the function.
+    
+    \item \emph{Fourier transform} gives a continuous spectrum of the function. The "basis" is still made of harmonic functions.
+    
+    \item \emph{Laplace transform} also gives a continuous spectrum of the function, but in a different basis: the basis is given by complex exponentials. I like to think of this basis as solutions of second order ODEs.
+\end{itemize}
+
+\end{flushleft}
+\end{frame}
+
+
+
+
+\begin{frame}{Laplace and Fourier transforms}
+% \framesubtitle{O}
+\begin{flushleft}
+
+Let's compare. Fourier transform:
+
+\begin{equation}
+    F(\omega) = \int_{-\infty}^\infty f(t) e^{-2\pi j t \omega} dt, \ \ \omega \in \mathbb{R}
+\end{equation}
+
+Laplace transform:
+
+\begin{equation}
+    F(s) = \int_0^\infty f(t) e^{-st}dt, \ \ s \in \mathbb{C}
+\end{equation}
+
+We can see that Fourier looks like Laplace with purely imaginary number in the exponent.
+
+\end{flushleft}
+\end{frame}
+
+
+
+
+
+
+
+\begin{frame}{Laplace and steady state solution}
+% \framesubtitle{O}
+\begin{flushleft}
+
+From analysing solutions of linear ODEs we know that, given harmonic input (sine, cosine, their combination) "after the transient process is over, the solution approaches a harmonic with the same frequency", but possibly different amplitude and phase.
+ 
+\bigskip
+
+Intuitively we can think of the imaginary part of $s$ as having to do with this frequency response. 
+
+\bigskip
+The kernel function of the Laplace transform is $e^{-st}$ with $s = \sigma + j \omega$ being a complex variable. If $\sigma = 0$, the kernel becomes $e^{-j \omega t} = \text{cos}(\omega t) - j \text{sin}(\omega t)$. You can see the similarity with Fourier transform kernel.
+
+
+\end{flushleft}
+\end{frame}
+
+
+
+
+
+\begin{frame}{Bode plot}
+% \framesubtitle{O}
+\begin{flushleft}
+
+The first key idea of a Bode plot is substitution of purely complex variable $j \omega$ in place of Laplace variable $s$, which can have non-zero real part.
+
+\bigskip
+
+Given a transfer function $W(s)$, $s = \sigma + j \omega$ we can analyse its behaviour when $\sigma = 0$. We can plot its amplitude $a(\omega) = \left| W(j \omega) \right|$ and its phase $\varphi(\omega) = \text{atan2}( \text{im}(W(j \omega)), \ \text{real}(W(j \omega))  )$.
+
+\bigskip
+ 
+Bode plot is actually two plots, 1) $20 \cdot \text{log}(a(\omega))$ and 2) $\frac{180}{\pi} \varphi(\omega)$. The 20 and log has to do with the vertical axis being in decibels. 
+
+\end{flushleft}
+\end{frame}
+
+
+
+
+\begin{frame}{Bode plot - example}
+% \framesubtitle{O}
+\begin{flushleft}
+
+Consider $W(s) = \frac{1}{1 + s}$. Then $W(j \omega) = \frac{1}{1 + j \omega}$. We can transform it as:
+
+\begin{equation}
+    W(j \omega) = \frac{1 - j \omega}{(1 + j \omega)(1 - j \omega)} = 
+    \frac{1 - j \omega}{1 + \omega^2}
+\end{equation}
+
+We that we know that $\text{real}(W(j \omega)) = \frac{1}{1 + \omega^2}$ and $\text{im}(W(j \omega)) = - \frac{\omega}{1 + \omega^2}$.
+
+\bigskip
+ 
+Bode plot is then given as:
+
+\begin{equation}
+   a(\omega) = \sqrt{\frac{1 - \omega^2}{(1 + \omega^2)^2}}
+\end{equation}
+\begin{equation}
+   \varphi(\omega) = \text{atan2} \left(-\frac{\omega}{1 + \omega^2}, \ \frac{1}{1 + \omega^2} \right)
+\end{equation}
+
+\end{flushleft}
+\end{frame}
+
+
+
+
+
+\begin{frame}{Bode plot - stability margins}
+% \framesubtitle{O}
+\begin{flushleft}
+
+Before we discuss the use of Bode plot, let us remember that closed-loop transfer function has form (when simple feedback is used):
+
+\begin{equation}
+    W(s) = \frac{G(s)}{1 + G(s)}
+\end{equation}
+
+Substituting $s \longrightarrow j \omega$ we get:
+
+\begin{equation}
+    W(\omega) = \frac{G(j \omega)}{1 + G(j \omega)}
+\end{equation}
+
+From this we can see that $W(\omega)$ becomes ill-defined if $G(j \omega) = -1$. Meaning, we want to avoid two things happening simultaneously: the amplitude of $G(j \omega)$ being equal to 1, and its phase (argument) being equal to $180\degree$ (remember, phase of $0\degree$ is pure positive real number, phase of $90\degree$ is pure positive imaginary number, $180\degree$ is pure negative real number, etc.).
+
+\end{flushleft}
+\end{frame}
+
+
+
+
+
+\begin{frame}{Stability margins - graphical example}
+% \framesubtitle{O}
+\begin{flushleft}
+
+Let's check an illustration:
+
+\bigskip
+
+\centerline{\textcolor{black}{\qrcode[height=1.6in]{https://www.electrical4u.com/bode-plot-gain-margin-phase-margin/}}}
+
+
+\end{flushleft}
+\end{frame}
+
+
+
+
+\begin{frame}{Code example}
+% \framesubtitle{O}
+\begin{flushleft}
+
+Check the colab notebook based on the example above for an illustration of how the Bode plot can be made by hand or via scipy signal library.
+
+\bigskip
+
+\centerline{\textcolor{black}{\qrcode[height=1.6in]{https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/blob/main/ColabNotebooks/lecture_Bode.ipynb}}}
+
+
+\end{flushleft}
+\end{frame}
+
+
+
+
+\begin{frame}{Read more}
+
+\begin{itemize}
+\item \bref{https://youtu.be/_eh1conN6YM}{Control System Lectures - Bode Plots, Introduction}
+
+
+\end{itemize}
+
+\end{frame}
+
+
+
+\begin{frame}{Thank you!}
+\centerline{Lecture slides are available via Moodle.}
+\bigskip
+\centerline{You can help improve these slides at:}
+\centerline{\mygit}
+\bigskip
+\centerline{Check Moodle for additional links, videos, textbook suggestions.}
+\bigskip
+
+\centerline{\textcolor{black}{\qrcode[height=1.6in]{https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022}}}
+\end{frame}
+
+\end{document}
