@@ -7,17 +7,15 @@ This repository contains regularly updated course materials. You can use lecture
 * Lecture 1 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/tree/main/Slides/Introduction
 * Lecture 2 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/tree/main/Slides/Stability
 * Lecture 3 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/tree/main/Slides/Laplace
-* Lecture 4 - 
-* Lecture 5 - 
-* Lecture 5 - 
-* Lecture 6 - 
-* Lecture 7 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2021/tree/main/Slides/ColumnLeftNull
-* Lecture 8 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2021/tree/main/Slides/LyapunovTheory
-* Lecture 9 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2021/tree/main/Slides/HJB_LQR
-* Lecture 10 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2021/tree/main/Slides/Observer
-* Lecture 11 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2021/tree/main/Slides/ControllabilityObservability
-* Lecture 12 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2021/tree/main/Slides/Linearization
-* Lecture 13 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2021/tree/main/Slides/Constrained
+* Lecture 4 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/tree/main/Slides/Bode
+* Lecture 5 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/tree/main/Slides/Control
+* Lecture 6 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/tree/main/Slides/Discrete
+* Lecture 7 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2021/tree/main/Slides/LyapunovTheory
+* Lecture 8 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2021/tree/main/Slides/HJB_LQR
+* Lecture 9 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2021/tree/main/Slides/Observer
+* Lecture 10 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2021/tree/main/Slides/ControllabilityObservability
+* Lecture 11 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2021/tree/main/Slides/Linearization
+* Lecture 12 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2021/tree/main/Slides/Constrained
 
 # Lecture videos (2022 offering)
 
