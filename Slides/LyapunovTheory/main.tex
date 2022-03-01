@@ -4,11 +4,10 @@
 
 
 \title{Lyapunov Theory, Lyapunov equations}
-\subtitle{Control Theory, Lecture 8}
+\subtitle{Control Theory, Lecture 7}
 \author{by Sergei Savin}
 \centering
-\date{Spring 2021}
-
+\date{\mydate}
 
 
 \begin{document}
@@ -41,11 +40,11 @@ Autonomous dynamic system $\dot{\bo{x}} = \bo{f}(\bo{x})$ is assymptotically sta
 \end{block}
 
 \begin{block}{Marginal stability criteria}
-$\dot{\bo{x}} = \bo{f}(\bo{x})$ is stable in the sense of Lyapunov, $\exists V = V(\bo{x}) > 0$, $\dot V(\bo{x}) \leq 0$.
+$\dot{\bo{x}} = \bo{f}(\bo{x})$ is stable in the sense of Lyapunov, $\exists V(\bo{x}) > 0$, $\dot V(\bo{x}) \leq 0$.
 \end{block}
 
 \begin{definition}
-Function $V = V(\bo{x}) > 0$ in this case is called \emph{Lyapunov function}.
+Function $V(\bo{x}) > 0$ in this case is called \emph{Lyapunov function}.
 \end{definition}
 
 \bigskip
@@ -248,8 +247,8 @@ In practice, you can easily use Lyapunov equations for stability verification. P
 \begin{flushleft}
 
 \begin{itemize}
-    \item \href{https://folk.uib.no/nmagb/m2142002l3.pdf}{3.9 Liapunov’s direct method}
-    \item \href{https://arxiv.org/abs/1809.05289}{Universita degli studi di Padova Dipartimento di Ingegneria dell'Informazione, Nicoletta Bof, Ruggero Carli, Luca Schenato, Technical Report, Lyapunov Theory for Discrete Time Systems}
+    \item \bref{https://folk.uib.no/nmagb/m2142002l3.pdf}{3.9 Liapunov’s direct method}
+    \item \bref{https://arxiv.org/abs/1809.05289}{Universita degli studi di Padova Dipartimento di Ingegneria dell'Informazione, Nicoletta Bof, Ruggero Carli, Luca Schenato, Technical Report, Lyapunov Theory for Discrete Time Systems}
 \end{itemize}
 
 \end{flushleft}
@@ -259,12 +258,15 @@ In practice, you can easily use Lyapunov equations for stability verification. P
 
 
 \begin{frame}{Thank you!}
-\centerline{Lecture slides are available via Moodle.}
-\bigskip
-\centerline{You can help improve these slides at:}
-\centerline{\href{https://github.com/SergeiSa/Control-Theory-Slides-Spring-2021}{github.com/SergeiSa/Control-Theory-Slides-Spring-2021}}
-\bigskip
-\centerline{Check Moodle for additional links, videos, textbook suggestions.}
+	\centerline{Lecture slides are available via Moodle.}
+	\bigskip
+	\centerline{You can help improve these slides at:}
+	\centerline{\mygit}
+	\bigskip
+	\centerline{Check Moodle for additional links, videos, textbook suggestions.}
+	\bigskip
+	
+	\centerline{\textcolor{black}{\qrcode[height=1.6in]{https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022}}}
 \end{frame}
 
 \end{document}
