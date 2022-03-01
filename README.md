@@ -25,8 +25,8 @@ This repository contains regularly updated course materials. You can use lecture
 * Lecture 2 (Stability) - https://youtu.be/YmNDcHZpUm8
 * Lecture 3 (Laplace, Transfer functions) - https://youtu.be/I-UykNTLWoQ
 * Lecture 4 (Bode) - https://youtu.be/E5uhziFTVrk
-* Lecture 5 - 
-* Lecture 6 - 
+* Lecture 5 (Stabilizing control) - https://youtu.be/jHvSm5WH_-A 
+* Lecture 6 (Discrete) - https://youtu.be/fLA6oJ5QjfY
 * Lecture 7 - 
 * Lecture 8 - 
 * Lecture 10 - 
