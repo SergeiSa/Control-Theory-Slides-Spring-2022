@@ -65,7 +65,7 @@ This repository contains regularly updated course materials. You can use lecture
 * Lecture 13 - https://youtu.be/UGLLSpwozTE
 * Lecture 14 - https://youtu.be/D-8M8XEygeg
 
-# Labs
+# Assignments (labs)
 
 * Assignment / lab / submission / gradable item \# 1:
 * * PDF: https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/blob/main/Assignment/Assignment1.pdf
@@ -74,7 +74,7 @@ This repository contains regularly updated course materials. You can use lecture
 * * PDF: https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/blob/main/Assignment/Assignment2.pdf
 * * Colab: https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/blob/main/Assignment/Assignment2.ipynb
 
-# Self-study and practice sessions with Colab
+# Practice sessions with Colab
 
 * Practice 1 (State Space) - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/blob/main/Practice/Practice_1_ODE_to_StateSpace.ipynb
 * Practice 2 (Stability) - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/blob/main/Practice/Practice_2_Stability.ipynb
