@@ -10,8 +10,8 @@ This repository contains regularly updated course materials. You can use lecture
 * Lecture 4 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/tree/main/Slides/Bode
 * Lecture 5 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/tree/main/Slides/Control
 * Lecture 6 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/tree/main/Slides/Discrete
-* Lecture 7 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2021/tree/main/Slides/LyapunovTheory
-* Lecture 8 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2021/tree/main/Slides/HJB_LQR
+* Lecture 7 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/tree/main/Slides/LyapunovTheory
+* Lecture 8 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/tree/main/Slides/HJB_LQR
 * Lecture 9 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2021/tree/main/Slides/Observer
 * Lecture 10 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2021/tree/main/Slides/ControllabilityObservability
 * Lecture 11 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2021/tree/main/Slides/Linearization
@@ -27,8 +27,8 @@ This repository contains regularly updated course materials. You can use lecture
 * Lecture 4 (Bode) - https://youtu.be/E5uhziFTVrk
 * Lecture 5 (Stabilizing control) - https://youtu.be/jHvSm5WH_-A 
 * Lecture 6 (Discrete) - https://youtu.be/fLA6oJ5QjfY
-* Lecture 7 - 
-* Lecture 8 - 
+* Lecture 7 (Lyapunov) - https://youtu.be/pA9NtQoKtSI
+* Lecture 8 (LQR, Riccati) - 
 * Lecture 10 - 
 * Lecture 11 - 
 * Lecture 12 - 
@@ -70,7 +70,9 @@ This repository contains regularly updated course materials. You can use lecture
 * Assignment / lab / submission / gradable item \# 1:
 * * PDF: https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/blob/main/Assignment/Assignment1.pdf
 * * Colab: https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/blob/main/Assignment/Assignment1.ipynb
-
+* Assignment / lab / submission / gradable item \# 2:
+* * PDF: https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/blob/main/Assignment/Assignment2.pdf
+* * Colab: https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/blob/main/Assignment/Assignment2.ipynb
 
 # Self-study with Colab
 
