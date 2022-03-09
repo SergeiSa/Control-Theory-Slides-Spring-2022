@@ -7,7 +7,7 @@
 \subtitle{Control Theory, Lecture 9}
 \author{by Sergei Savin}
 \centering
-\date{Spring 2021}
+\date{\mydate}
 
 
 
@@ -90,36 +90,36 @@ Optimal cost is attained when optimal policy is attained: $\pi = \pi^*(\bo{x}, t
 
 
 
-\begin{frame}{Hamilton-Jacobi-Bellman equation}
-\framesubtitle{Differentiating optimal cost}
-\begin{flushleft}
-
-
-Since $J^*(\bo{x}_0)$ does not depend on $t$, its full derivative is zero:
-
-\begin{equation}
-\frac{d J^*(\bo{x}_0)}{dt} = 0
-\end{equation}
-
-At the same time, we can expand the full derivative as follows:
-
-\begin{equation}
-\frac{d J^*}{dt } = 
-\frac{\partial J^*}{\partial \bo{x}} \dot {\bo{x}} +
-\frac{\partial J^*}{\partial t} = 0
-\end{equation}
-
-\bigskip
-
-Observe that $\frac{\partial J^*}{\partial t} = g(\bo{x}, \bo{u})$, and $\dot {\bo{x}} = \bo{f} (\bo{x}, \bo{u})$. Therefore:
-
-\begin{equation}
-\frac{\partial J^*}{\partial \bo{x}} \bo{f} (\bo{x}, \bo{u}) +
-g(\bo{x}, \bo{u}) = 0
-\end{equation}
-
-\end{flushleft}
-\end{frame}
+%\begin{frame}{Hamilton-Jacobi-Bellman equation}
+%\framesubtitle{Differentiating optimal cost}
+%\begin{flushleft}
+%
+%
+%Since $J^*(\bo{x}_0)$ does not depend on $t$, its full derivative is zero:
+%
+%\begin{equation}
+%\frac{d J^*(\bo{x}_0)}{dt} = 0
+%\end{equation}
+%
+%At the same time, we can expand the full derivative as follows:
+%
+%\begin{equation}
+%\frac{d J^*}{dt } = 
+%\frac{\partial J^*}{\partial \bo{x}} \dot {\bo{x}} +
+%\frac{\partial J^*}{\partial t} = 0
+%\end{equation}
+%
+%\bigskip
+%
+%Observe that $\frac{\partial J^*}{\partial t} = g(\bo{x}, \bo{u})$, and $\dot {\bo{x}} = \bo{f} (\bo{x}, \bo{u})$. Therefore:
+%
+%\begin{equation}
+%\frac{\partial J^*}{\partial \bo{x}} \bo{f} (\bo{x}, \bo{u}) +
+%g(\bo{x}, \bo{u}) = 0
+%\end{equation}
+%
+%\end{flushleft}
+%\end{frame}
 
 
 
@@ -338,12 +338,15 @@ There are a number of ways to solve LQR:
 
 
 \begin{frame}{Thank you!}
-\centerline{Lecture slides are available via Moodle.}
-\bigskip
-\centerline{You can help improve these slides at:}
-\centerline{\href{https://github.com/SergeiSa/Control-Theory-Slides-Spring-2021}{github.com/SergeiSa/Control-Theory-Slides-Spring-2021}}
-\bigskip
-\centerline{Check Moodle for additional links, videos, textbook suggestions.}
+	\centerline{Lecture slides are available via Moodle.}
+	\bigskip
+	\centerline{You can help improve these slides at:}
+	\centerline{\mygit}
+	\bigskip
+	\centerline{Check Moodle for additional links, videos, textbook suggestions.}
+	\bigskip
+	
+	\centerline{\textcolor{black}{\qrcode[height=1.6in]{https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022}}}
 \end{frame}
 
 \end{document}
