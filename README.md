@@ -74,12 +74,16 @@ This repository contains regularly updated course materials. You can use lecture
 * * PDF: https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/blob/main/Assignment/Assignment2.pdf
 * * Colab: https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/blob/main/Assignment/Assignment2.ipynb
 
-# Self-study with Colab
+# Self-study and practice sessions with Colab
 
-* Lecture 1 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/blob/main/Practice/Practice_1_ODE_to_StateSpace.ipynb
-* Lecture 2 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/blob/main/Practice/Practice_2_Stability.ipynb
-* Lecture 3 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/blob/main/Practice/Practice_3_Laplace_TransferFunctions.ipynb
-* 
+* Practice 1 (State Space) - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/blob/main/Practice/Practice_1_ODE_to_StateSpace.ipynb
+* Practice 2 (Stability) - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/blob/main/Practice/Practice_2_Stability.ipynb
+* Practice 3 (Laplace, Transfer functions) - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/blob/main/Practice/Practice_3_Laplace_TransferFunctions.ipynb
+* Practice 4 (Bode) - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/blob/main/Practice/Practice_4_Bode.ipynb
+* Practice 5 (Feedback control) - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/blob/main/Practice/Practice_5_FeedbackControl.ipynb
+* Practice 6 (Trajectory tracking) - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/blob/main/Practice/Practice_6_TrajectoryTracking.ipynb
+* Practice 7 (Discrete) - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/blob/main/Practice/Practice_7_Discrete.ipynb
+* Practice 8 (Lyapunov) - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/blob/main/Practice/Practice_8_Lyapunov.ipynb
 
 # For contributors
 
