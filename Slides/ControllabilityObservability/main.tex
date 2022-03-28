@@ -7,7 +7,7 @@
 \subtitle{Control Theory, Lecture 11}
 \author{by Sergei Savin}
 \centering
-\date{Spring 2021}
+\date{\mydate}
 
 
 
@@ -83,11 +83,13 @@ Equation $\bo{x}_{n+1} = \bo{A}^n \bo{x}_1 + ...
     \end{bmatrix}
 \end{equation}
 
-Notice that in order for the system to go from $\bo{x}_1$ to $\bo{x}_{n+1}$, it needs be in the column space of $\begin{bmatrix}
+Notice that in order for the system to go from $\bo{x}_1$ to $\bo{x}_{n+1}$, vector $\bo{x}_{n+1} - \bo{A}^n \bo{x}_1$ needs be in the column space of $\mathcal{C} = \begin{bmatrix}
     \bo{B} &
     \bo{A} \bo{B} & ... &
     \bo{A}^{n - 1} \bo{B}
     \end{bmatrix}$.
+
+Since $\bo{x}_{n+1}$ can be anything, and $\bo{x}_1$ might be equal to zero (among other possibilities), we should require that all vectors in $\R^n$ need to be in the column space of $\mathcal{C}$, meaning $\mathcal{C}$ needs to be full rank.
 
 \end{flushleft}
 \end{frame}
@@ -98,7 +100,7 @@ Notice that in order for the system to go from $\bo{x}_1$ to $\bo{x}_{n+1}$, it 
 \begin{flushleft}
 
 \begin{block}{Controllability}
-For a system $\bo{x}_{i+1} = \bo{A}  \bo{x}_i + \bo{B} \bo{u}_i$, where $\bo{x} \in \R^n$, if the matrix $\mathcal{B} = \begin{bmatrix}
+For a system $\bo{x}_{i+1} = \bo{A}  \bo{x}_i + \bo{B} \bo{u}_i$, where $\bo{x} \in \R^n$, if the matrix $\mathcal{C} = \begin{bmatrix}
     \bo{B} &
     \bo{A} \bo{B} & ... &
     \bo{A}^{n - 1} \bo{B}
@@ -167,7 +169,7 @@ Dynamical system $\varepsilon_{i+1} = \bo{A}^\top \varepsilon_i - \bo{C}^\top \b
 Controllability matrix of this system is:
 
 \begin{equation}
-\mathcal{C}^\top = \begin{bmatrix}
+\mathcal{O}^\top = \begin{bmatrix}
     \bo{C}^\top &
     (\bo{A}^\top) \bo{C}^\top & ... &
     (\bo{A}^\top)^{n - 1} \bo{C}^\top
@@ -177,7 +179,7 @@ Controllability matrix of this system is:
 It is easier to represent this matrix in its transposed form:
 
 \begin{equation}
-\mathcal{C} = \begin{bmatrix}
+\mathcal{O} = \begin{bmatrix}
     \bo{C} \\
     \bo{C}\bo{A}  \\ ... \\
     \bo{C}\bo{A}^{n - 1}
@@ -193,7 +195,7 @@ It is easier to represent this matrix in its transposed form:
 \begin{flushleft}
 
 \begin{block}{Observability}
-For a system $\bo{x}_{i+1} = \bo{A}  \bo{x}_i + \bo{B} \bo{u}_i$ and $\bo{y}_i = \bo{C}  \bo{x}_i$, where $\bo{x} \in \R^n$, if the matrix $\mathcal{C} = \begin{bmatrix}
+For a system $\bo{x}_{i+1} = \bo{A}  \bo{x}_i + \bo{B} \bo{u}_i$ and $\bo{y}_i = \bo{C}  \bo{x}_i$, where $\bo{x} \in \R^n$, if the matrix $\mathcal{O} = \begin{bmatrix}
     \bo{C} \\
     \bo{C}\bo{A}  \\ ... \\
     \bo{C}\bo{A}^{n - 1}
@@ -292,19 +294,15 @@ In the actual engineering reality we often have to deal with equations, that loo
 
 
 \begin{frame}{Thank you!}
-\centerline{Lecture slides are available via Moodle.}
-\bigskip
-\centerline{You can help improve these slides at:}
-\centerline{
-\textcolor{blue}{\centerline{\href{https://github.com/SergeiSa/Control-Theory-Slides-Spring-2021}{github.com/SergeiSa/Control-Theory-Slides-Spring-2021}}}}
-
-\bigskip
-
-\textcolor{black}{\qrcode[height=1.5in]{github.com/SergeiSa/Control-Theory-Slides-Spring-2021}}
-
-\bigskip
-
-\centerline{Check Moodle for additional links, videos, textbook suggestions.}
+	\centerline{Lecture slides are available via Moodle.}
+	\bigskip
+	\centerline{You can help improve these slides at:}
+	\centerline{\mygit}
+	\bigskip
+	\centerline{Check Moodle for additional links, videos, textbook suggestions.}
+	\bigskip
+	
+	\centerline{\textcolor{black}{\qrcode[height=1.6in]{https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022}}}
 \end{frame}
 
 \end{document}

@@ -1,0 +1,452 @@
+\documentclass{beamer}
+
+\input{settings.tex}
+
+
+\title{LMI: Control design and robustness}
+\subtitle{Control Theory, Lecture ??}
+\author{by Sergei Savin}
+\centering
+\date{\mydate}
+
+
+
+\begin{document}
+\maketitle
+
+
+
+\begin{frame}{Content}
+\begin{itemize}
+\item LMI
+\item Control design
+\item Robustness
+\item S-procedure
+\item Appendix A
+\end{itemize}
+\end{frame}
+
+
+
+
+\begin{frame}{linear matrix inequalities (LMI)}
+%\framesubtitle{How do we know the state?}
+\begin{flushleft}
+
+A linear matrix inequality (LMI) is a semidefinite constraint placed on a matrix:
+
+\begin{equation}
+\bo{S} \succ 0
+\end{equation}
+
+We assume (and this is true!) that there exist \emph{solvers} that can solve problems with such constraints. 
+
+
+\begin{example}
+	Given $\bo{A}$, find such $\bo{S}\succ 0$ that $\bo{A}^\top\bo{S} + \bo{S}\bo{A} \prec 0$.
+\end{example}
+
+Notice that the last example is continious-time Lyapunov eq. for LTI system $\dx{x} = \bo{A}\bo{x}$, and if such $\bo{S}$ exists the system is stable. 
+
+\end{flushleft}
+\end{frame}
+
+
+
+\begin{frame}{Control design, 1}
+%	\framesubtitle{Part 1}
+	\begin{flushleft}
+		
+		Consider a system $\dx{x} = \bo{A}\bo{x} + \bo{B}\bo{u}$, control $\bo{u} = \bo{K}\bo{x}$ and a Lyapunov function $V = \bo{x}^\top\bo{S}\bo{x}$, $\bo{S} \succ 0$.
+		
+		\bigskip
+		
+		Closed-form of the system is $\dx{x} = (\bo{A} + \bo{B}\bo{K})\bo{x}$, and full derivative of the Lyapunov function:
+		
+		\begin{equation}
+			\dot V = \bo{x}^\top (\bo{A} + \bo{B}\bo{K})^\top\bo{S}\bo{x} + \bo{x}^\top\bo{S} (\bo{A} + \bo{B}\bo{K}) \bo{x} \leq 0
+		\end{equation}
+	
+		This can be re-written as an LMI:
+		
+		\begin{equation}
+			\label{eq:vdot}
+			(\bo{A} + \bo{B}\bo{K})^\top\bo{S} + \bo{S} (\bo{A} + \bo{B}\bo{K}) \prec 0
+		\end{equation}
+	
+		This is \emph{not linear} in decision variables ($\bo{S}$ and $\bo{K}$), and can't be solved directly using popular solvers.
+		
+	\end{flushleft}
+\end{frame}
+
+
+
+
+\begin{frame}{Control design, 2}
+%	\framesubtitle{Part 2}
+	\begin{flushleft}
+		
+		Introducing new variable $\bo{P} = \bo{S}^{-1}$ and multiplying \eqref{eq:vdot} by $\bo{P}$ on both sides (we can so it, as both $\bo{P}$ and $\bo{S}$ are full rank, and thus it is a congruence transformation which preserves definiteness, see appendix) we get:
+		
+		\begin{equation}
+			\bo{P}(\bo{A} + \bo{B}\bo{K})^\top + (\bo{A} + \bo{B}\bo{K})\bo{P} \prec 0
+		\end{equation}
+	
+		Now we introduce one more variable $\bo{L} = \bo{K}\bo{P}$ and get an LMI constraint:
+		
+		\begin{equation}
+			\label{control_design}
+			\bo{P}\bo{A}^\top + \bo{A}\bo{P} + \bo{L}^\top\bo{B}^\top + \bo{B}\bo{L} \prec 0
+		\end{equation}
+		
+		Solving \eqref{control_design} gives us $\bo{P}$ and $\bo{L}$, from which we can compute $\bo{K} = \bo{L}\bo{P}^{-1}$ and $\bo{S} = \bo{P}^{-1}$, solving the original problem.
+		
+	\end{flushleft}
+\end{frame}
+
+
+
+
+\begin{frame}{Robustness, 1}
+	%	\framesubtitle{Part 1}
+	\begin{flushleft}
+		
+		Consider a system $\dx{x} = \bo{A}\bo{x}$, but when you don't know $\bo{A}$ exactly. In other words, you don't know the model exactly. This is not to say that we know nothing about the model, but there is an uncertainty in our knowledge.
+		
+		\bigskip
+		
+		A good way to model is luck of model knowledge, this \emph{uncertainty}, is this:
+		
+		\begin{equation}
+			\label{eq:uncertain}
+			\dx{x} = (\bo{A} + \bo{F} \Delta \bo{E})\bo{x}
+		\end{equation}
+		%
+		where $\bo{F}$ and $\bo{E}$ are arbitrary matrices, and $\Delta$ is a \emph{norm-bounded} matrix: $\Delta \leq 1$.
+		
+		\bigskip
+		
+		We can think of it this way: $\bo{A} + \bo{F} \Delta \bo{E}$ is the true but unknown model, and the range of all possible models we can expect is bounded by the possible values of $\Delta$.
+				
+	\end{flushleft}
+\end{frame}
+
+
+
+\begin{frame}{Robustness, 2}
+	%	\framesubtitle{Part 1}
+	\begin{flushleft}
+		
+		Lets write the Lyapunov equation for the system \eqref{eq:uncertain}:
+		
+		\begin{equation}
+			\dot V = \bo{x}^\top 
+			(\bo{A} + \bo{F} \Delta \bo{E})^\top\bo{S}\bo{x} + \bo{x}^\top\bo{S} (\bo{A} + \bo{F} \Delta \bo{E}) \bo{x} \leq 0
+		\end{equation}
+		
+		Let us introduce a new variable $\bo{w} = \Delta \bo{E}\bo{x}$:
+		
+		\begin{equation}
+			\label{eq:Lyapunov_xw}
+			\dot V = \bo{x}^\top 
+			(\bo{A}^\top \bo{S} + \bo{S}\bo{A}) \bo{x} + 
+			\bo{w}^\top \bo{F}^\top\bo{S} \bo{x} +
+			\bo{x}^\top \bo{S}\bo{F} \bo{w} \leq 0
+		\end{equation}
+		
+		Let us consider $\bo{w}^\top \bo{w}$:
+		
+		\begin{equation}
+			\label{eq:Delta-inequality}
+		\bo{w}^\top \bo{w} = 
+		\bo{x}^\top\bo{E}^\top \Delta \Delta \bo{E}\bo{x}
+		\leq
+		\bo{x}^\top\bo{E}^\top \bo{E}\bo{x}
+		\end{equation}		
+		%
+		which is true because $|| \Delta ||$. In fact, the only property of the norm that we need here is that the delta inequality \eqref{eq:Delta-inequality} holds.
+		
+	\end{flushleft}
+\end{frame}
+
+
+
+\begin{frame}{Robustness, 3}
+	%	\framesubtitle{Part 1}
+	\begin{flushleft}
+		
+		With $\bo{w}^\top \bo{w} 
+		\leq
+		\bo{x}^\top\bo{E}^\top \bo{E}\bo{x}$ we can write:
+		
+		\begin{equation}
+		\bo{x}^\top\bo{E}^\top \bo{E}\bo{x} - \bo{w}^\top \bo{w} \geq 0
+		\end{equation}	
+
+Which is the same as:
+	
+		\begin{equation}
+			\label{eq:EEww}
+			\begin{bmatrix}
+				\bo{x} \\ \bo{w}
+			\end{bmatrix}^\top
+		\begin{bmatrix}
+			\bo{E}^\top \bo{E} & 0 \\
+			0 & -\bo{I}
+		\end{bmatrix}		
+		\begin{bmatrix}
+			\bo{x} \\ \bo{w}
+		\end{bmatrix}
+		\geq 0
+		\end{equation}	
+		
+The same way we can rewrite \eqref{eq:Lyapunov_xw}:
+
+		\begin{equation}
+			\label{eq:xw_Lyapunov}
+	\begin{bmatrix}
+		\bo{x} \\ \bo{w}
+	\end{bmatrix}^\top
+	\begin{bmatrix}
+		\bo{A}^\top \bo{S} + \bo{S}\bo{A} & \bo{S}\bo{F} \\
+		\bo{F}^\top\bo{S} & 0
+	\end{bmatrix}		
+	\begin{bmatrix}
+		\bo{x} \\ \bo{w}
+	\end{bmatrix}
+	\leq 0
+\end{equation}	
+	%
+	which only need to hold while \eqref{eq:EEww} holds.
+		
+	\end{flushleft}
+\end{frame}
+
+
+
+\begin{frame}{S-procedure}
+	%	\framesubtitle{Part 1}
+	\begin{flushleft}
+		
+		There is a way to enforce constraint $\bo{z}^\top \bo{M}\bo{z} \leq 0$ for such $\bo{z}$ that $\bo{z}^\top \bo{N}\bo{z} \geq 0$. This is called \emph{s-procedure}.
+		
+		\begin{theorem}
+			If $\gamma > 0$ and $\bo{M} + \gamma \bo{N} \prec 0$ then $\bo{z}^\top \bo{N}\bo{z} \geq 0 \implies \bo{z}^\top \bo{M}\bo{z} \leq 0$ 
+		\end{theorem}
+		
+	\end{flushleft}
+\end{frame}
+
+
+
+\begin{frame}{Robustness, 4}
+	%	\framesubtitle{Part 1}
+	\begin{flushleft}
+		
+		
+		Using s-procedure we enforce \eqref{eq:xw_Lyapunov} when \eqref{eq:EEww} holds:
+		
+		\begin{equation}
+%			\label{eq:EEww}
+			\begin{bmatrix}
+				\bo{x} \\ \bo{w}
+			\end{bmatrix}^\top
+			\begin{bmatrix}
+				\bo{A}^\top \bo{S} + \bo{S}\bo{A} + \gamma \bo{E}^\top \bo{E} & \bo{S}\bo{F} \\
+				\bo{F}^\top\bo{S} & -\gamma\bo{I}
+			\end{bmatrix}		
+			\begin{bmatrix}
+				\bo{x} \\ \bo{w}
+			\end{bmatrix}
+			\leq 0
+		\end{equation}
+	
+	In LMI form this is:
+	
+		\begin{equation}
+	\begin{bmatrix}
+		\bo{A}^\top \bo{S} + \bo{S}\bo{A} + \gamma \bo{E}^\top \bo{E} & \bo{S}\bo{F} \\
+		\bo{F}^\top\bo{S} & -\gamma\bo{I}
+	\end{bmatrix}		
+	\prec 0
+\end{equation}	
+		
+			
+	This is a condition that the system is stable for all values of $\Delta$. The decision variables are $\bo{S}$ and $\gamma$.		
+		
+	\end{flushleft}
+\end{frame}
+
+
+
+
+
+\begin{frame}{Quadratic stability, 1}
+	%	\framesubtitle{Part 1}
+	\begin{flushleft}
+		
+		Let us consider the following system:
+		
+		\begin{equation}
+			\dx{x} = \bo{A}\bo{x}
+		\end{equation}
+		%
+		where $\bo{A} = \sum\limits_{i=1}^{n} \alpha_i \bo{A}_i$, $\alpha_i \geq 0$, $\sum\limits_{i=1}^{n} \alpha_i = 1$ with known $\bo{A}_i$ but unknown coefficients $\alpha_i$. Is it stable for all possible values of $\alpha_i$? Note that we can't use eigenvalue analysis in this case.
+		
+		\bigskip
+		
+		Geometrically, this means $\bo{A}$ is in a polytope with vertices $\bo{A}_i$.
+		
+	\end{flushleft}
+\end{frame}
+
+
+
+\begin{frame}{Quadratic stability, 2}
+	%	\framesubtitle{Part 1}
+	\begin{flushleft}
+		
+		\begin{theorem}[Quadratic stability]
+			$\bo{A}_i^\top \bo{S} + \bo{S} \bo{A}_i \leq 0$ implies $\dx{x} = \sum\limits_{i=1}^{n} \alpha_i \bo{A}_i \bo{x}$ is stable, where $\alpha_i \geq 0$, $\sum\limits_{i=1}^{n} \alpha_i = 1$
+		\end{theorem}
+		
+		\bigskip
+		
+		Proof: $\dot V = \left(\sum\limits_{i=1}^{n} \alpha_i \bo{A}_i \right)^\top \bo{S} + \bo{S} 
+		\left( \sum\limits_{i=1}^{n} \alpha_i \bo{A}_i \right)$ can be re-written as: 
+		$\dot V = \alpha_i (\bo{A}_i^\top \bo{S} + \bo{S} \bo{A}_i)$ and since $\bo{A}_i^\top \bo{S} + \bo{S} \bo{A}_i \leq 0$ and $\alpha_i \geq 0$, then $\dot V \leq 0$. \qed
+		
+	\end{flushleft}
+\end{frame}
+
+
+
+
+\begin{frame}{Quadratic stability - Control design, 1}
+	%	\framesubtitle{Part 1}
+	\begin{flushleft}
+		
+		Let us consider the following system:
+		
+		\begin{equation}
+			\dx{x} = \bo{A}\bo{x} + \bo{B}\bo{x}
+		\end{equation}
+		%
+		where $\bo{A} = \sum\limits_{i=1}^{n} \alpha_i \bo{A}_i$, $\alpha_i \geq 0$, $\sum\limits_{i=1}^{n} \alpha_i = 1$ with known $\bo{A}_i$ but unknown coefficients $\alpha_i$. How to design control law $\bo{u} = \bo{K}\bo{x}$ making the system stable for all possible values of $\alpha_i$? 
+		
+		\bigskip
+		
+		The closed-loop form of the system is:
+		
+		\begin{equation}
+			\dx{x} = (\sum\limits_{i=1}^{n} \alpha_i \bo{A}_i + \bo{B}\bo{K})\bo{x}
+		\end{equation}
+		
+		
+	\end{flushleft}
+\end{frame}
+
+
+
+\begin{frame}{Quadratic stability - Control design, 2}
+	%	\framesubtitle{Part 1}
+	\begin{flushleft}
+		
+		Let us write Lyapunov eq. for the system:
+		
+		\begin{equation}
+			\left(
+			\sum\limits_{i=1}^{n} \alpha_i (\bo{A}_i + \bo{B}\bo{K})
+			\right)^\top \bo{S} 
+			+ 
+			\bo{S}
+			\left(
+			\sum\limits_{i=1}^{n} \alpha_i (\bo{A}_i + \bo{B}\bo{K})
+			\right) 
+			\prec 0
+		\end{equation}
+		
+		We can re-write it as:
+		
+		\begin{equation}
+	\sum\limits_{i=1}^{n} \alpha_i 
+	\left( 
+	(\bo{A}_i + \bo{B}\bo{K})^\top \bo{S} +
+	\bo{S} (\bo{A}_i + \bo{B}\bo{K})
+	\right)
+	\prec 0
+		\end{equation}
+	
+	Hence if $(\bo{A}_i + \bo{B}\bo{K})^\top \bo{S} +
+	\bo{S} (\bo{A}_i + \bo{B}\bo{K}) \prec 0$, the original system is stable.
+			
+	\end{flushleft}
+\end{frame}
+
+
+
+\begin{frame}{Quadratic stability - Control design, 3}
+	%	\framesubtitle{Part 1}
+	\begin{flushleft}
+		
+		From $(\bo{A}_i + \bo{B}\bo{K})^\top \bo{S} +
+		\bo{S} (\bo{A}_i + \bo{B}\bo{K}) \prec 0$, we can go on to do control design. Introducing $\bo{P} = \bo{S}^{-1}$, we use congruence transformation multiplying by $\bo{P}$ on both sides:
+		
+		\begin{equation}
+			\bo{P}(\bo{A}_i + \bo{B}\bo{K})^\top  +
+			(\bo{A}_i + \bo{B}\bo{K})\bo{P} \prec 0
+		\end{equation}
+		
+		Introducing new variable $\bo{L} = \bo{K} \bo{P}$ we get a problem linear in decision variables:
+		
+		\begin{equation}
+			\bo{P}\bo{A}_i^\top + \bo{A}_i \bo{P} +
+			\bo{L}^\top\bo{B}^\top + \bo{B}\bo{L} \prec 0
+		\end{equation}		
+		%
+		where the decision variables are $\bo{P}$ and $\bo{L}$. The control gain matrix is found as $\bo{K} = \bo{L} \bo{P}^{-1}$.
+		
+	\end{flushleft}
+\end{frame}
+
+
+
+\begin{frame}{Thank you!}
+	\centerline{Lecture slides are available via Moodle.}
+	\bigskip
+	\centerline{You can help improve these slides at:}
+	\centerline{\mygit}
+	\bigskip
+	\centerline{Check Moodle for additional links, videos, textbook suggestions.}
+	\bigskip
+	
+	\centerline{\textcolor{black}{\qrcode[height=1.6in]{https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022}}}
+\end{frame}
+
+
+
+
+\begin{frame}{Appendix A}
+	\framesubtitle{Congruence transformation and definiteness}
+	\begin{flushleft}
+		
+		Consider matrices $\bo{P} \succ 0$, and $\bo{V} \in \R^{n, n}$ is full rank. We can prove that:
+		
+		\begin{equation}
+			\bo{P} \succ 0 \implies \bo{V}^\top\bo{P}\bo{V} \succ 0
+		\end{equation}
+		
+		Proof: $\bo{x}^\top\bo{V}^\top\bo{P}\bo{V}\bo{x} = \bo{z}^\top\bo{P}\bo{z}$, where $\bo{z} = \bo{V}\bo{x}$. Since $\bo{P} \succ 0$, $\bo{z}^\top\bo{P}\bo{z} \geq 0$, hence $\bo{x}^\top\bo{V}^\top\bo{P}\bo{V}\bo{x} \geq 0$. 
+		
+		\begin{definition}
+			Congruence transformation preserves semi-definiteness: $\text{det}(\bo{V}) \neq 0, \ \bo{P} \succ 0 \implies \bo{V}^\top\bo{P}\bo{V} \succ 0$
+		\end{definition}
+		
+		
+	\end{flushleft}
+\end{frame}
+
+
+
+
+\end{document}

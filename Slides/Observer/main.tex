@@ -7,7 +7,7 @@
 \subtitle{Control Theory, Lecture 10}
 \author{by Sergei Savin}
 \centering
-\date{Spring 2021}
+\date{\mydate}
 
 
 
@@ -103,11 +103,9 @@ Let us introduce new notation. Assume we have an LTI system of the following for
 Then:
 
 \begin{itemize}
-\item $\bo{x}$ is the state (actual or true state)
-\item $\bo{y}$ is the output (actual or true output)
-% \item $\Tilde{\bo{y}}$ is the measured output
-\item $\hat{\bo{x}}$ is the estimated (observed) state
-\item $\hat{\bo{y}}$ is the estimated (observed) output
+\item $\bo{x}$ and $\bo{y}$ are the state and output (actual or true)
+\item $\hat{\bo{x}}$ and $\hat{\bo{y}}$ are the estimated (observed) state
+and output.
 \end{itemize}
 
 Notice that we never know true state $\bo{x}$, and therefore for the control purposes we have to use the estimated state $\hat{\bo{x}}$.
@@ -449,16 +447,15 @@ As long as the observer and the controller are stable independently, the overall
 
 
 \begin{frame}{Thank you!}
-\centerline{Lecture slides are available via Moodle.}
-\bigskip
-\centerline{You can help improve these slides at:}
-\centerline{\href{https://github.com/SergeiSa/Control-Theory-Slides-Spring-2021}{github.com/SergeiSa/Control-Theory-Slides-Spring-2021}}
-
-\includegraphics[width=1.6in]{qrcode.png}
-\bigskip
-
-\centerline{Check Moodle for additional links, videos, textbook suggestions.}
-
+	\centerline{Lecture slides are available via Moodle.}
+	\bigskip
+	\centerline{You can help improve these slides at:}
+	\centerline{\mygit}
+	\bigskip
+	\centerline{Check Moodle for additional links, videos, textbook suggestions.}
+	\bigskip
+	
+	\centerline{\textcolor{black}{\qrcode[height=1.6in]{https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022}}}
 \end{frame}
 
 \end{document}
