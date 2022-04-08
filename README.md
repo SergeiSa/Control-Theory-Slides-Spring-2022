@@ -28,8 +28,8 @@ This repository contains regularly updated course materials. You can use lecture
 * Lecture 5 (Stabilizing control) - https://youtu.be/jHvSm5WH_-A 
 * Lecture 6 (Discrete) - https://youtu.be/fLA6oJ5QjfY
 * Lecture 7 (Lyapunov) - https://youtu.be/pA9NtQoKtSI
-* Lecture 8 (LQR, Riccati) - 
-* Lecture 10 - 
+* Lecture 9 (LQR, Riccati) - https://youtu.be/fdUl5mxnl2Y
+* Lecture 10 (Observers) - https://youtu.be/L1QriA3DMdA
 * Lecture 11 - 
 * Lecture 12 - 
 * Lecture 13 - 
