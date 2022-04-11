@@ -33,6 +33,17 @@
 \end{frame}
 
 
+
+\begin{frame}{Controllability}
+	% \framesubtitle{Definitions}
+	\begin{flushleft}
+		
+		
+		
+	\end{flushleft}
+\end{frame}
+
+
 \begin{frame}{Controllability of Discrete LTI}
 % \framesubtitle{Definitions}
 \begin{flushleft}
@@ -104,8 +115,10 @@ For a system $\bo{x}_{i+1} = \bo{A}  \bo{x}_i + \bo{B} \bo{u}_i$, where $\bo{x} 
     \bo{B} &
     \bo{A} \bo{B} & ... &
     \bo{A}^{n - 1} \bo{B}
-    \end{bmatrix}$ is full row rank (i.e. $\text{rank}(\mathcal{B}) = n$), any state can be reached, which means that \emph{the system is controllable}.
+    \end{bmatrix}$ is full row rank (i.e. $\text{rank}(\mathcal{C}) = n$), any state can be reached, which means that \emph{the system is controllable}.
 \end{block}
+
+If you are interested why the controllability matrix for not include more columns, like $\bo{A}^n$, see Appendix A.
 
 \end{flushleft}
 \end{frame}
@@ -132,7 +145,7 @@ And an observer:
 \bo{L} (\bo{y}_i - \bo{C} \hat{\bo{x}}_i)
 \end{equation}
 
-Remember that we can define observation error $\bo{e}_i = \hat{\bo{x}}_i - \bo{x}_i$ and white its dynamics:
+Remember that we can define observation error $\bo{e}_i = \hat{\bo{x}}_i - \bo{x}_i$ and write its dynamics:
 
 \begin{equation}
 \bo{e}_{i+1} = \bo{A} \bo{e}_i - 
@@ -199,7 +212,7 @@ For a system $\bo{x}_{i+1} = \bo{A}  \bo{x}_i + \bo{B} \bo{u}_i$ and $\bo{y}_i =
     \bo{C} \\
     \bo{C}\bo{A}  \\ ... \\
     \bo{C}\bo{A}^{n - 1}
-    \end{bmatrix}$ is full column rank (i.e. $\text{rank}(\mathcal{C}) = n$), observation error can go to zero from any initial position, which means that \emph{the system is observable}.
+    \end{bmatrix}$ is full column rank (i.e. $\text{rank}(\mathcal{O}) = n$), observation error can go to zero from any initial position, which means that \emph{the system is observable}.
 \end{block}
 
 \end{flushleft}
@@ -304,5 +317,68 @@ In the actual engineering reality we often have to deal with equations, that loo
 	
 	\centerline{\textcolor{black}{\qrcode[height=1.6in]{https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022}}}
 \end{frame}
+
+
+
+\begin{frame}{Appendix A, part 1}
+	% \framesubtitle{Limited control}
+	\begin{flushleft}
+		
+		Why does controllability matrix $\mathcal{C} = \begin{bmatrix}
+			\bo{B} &
+			\bo{A} \bo{B} & ... &
+			\bo{A}^{n - 1} \bo{B}
+		\end{bmatrix}$  includes only column blocks up to $\bo{A}^{n - 1} \bo{B}$ and not, for example, $\bo{A}^n \bo{B}$? We start with:
+	
+		\begin{theorem}[Cayley–Hamilton]
+			A matrix $\bo{M} \in \R^{n, n}$ satisfies its own characteristic equation.
+		\end{theorem}
+	
+		A characteristic equation can be written as $\lambda^n + a_{n-1}\lambda^{n-1} + ... + a_0  = 0$, meaning that we can write:
+		
+		\begin{equation}
+			\bo{M}^n + a_{n-1}\bo{M}^{n-1} + ... + a_0\bo{I}  = 0
+		\end{equation}	
+		
+		Meaning that $\bo{M}^n$ is a linear combination of $\bo{M}^{n-1}$, $\bo{M}^{n-2}$, ..., $\bo{I}$.
+	
+		
+	\end{flushleft}
+\end{frame}
+
+
+
+\begin{frame}{Appendix A, part 2}
+	% \framesubtitle{Limited control}
+	\begin{flushleft}
+		
+		The controllability matrix can be written as 
+		
+		\begin{equation}
+			\mathcal{C} = \begin{bmatrix}
+				\bo{I} &
+				\bo{A}  & ... &
+				\bo{A}^{n - 1} 
+			\end{bmatrix}
+			\begin{bmatrix}
+				\bo{B} & \bo{0} & ... & \bo{0} \\
+				\bo{0}  & \bo{B} & ... & \bo{0} \\
+				...  & ... & ... & ... \\
+				\bo{0}  & \bo{0} & ... & \bo{B} 
+			\end{bmatrix}
+		\end{equation}
+		
+		meaning that the rank of $\mathcal{C}$ depends only on matrix $\begin{bmatrix}
+			\bo{I} &
+			\bo{A}  & ... &
+			\bo{A}^{n - 1} 
+		\end{bmatrix}$. Adding  to it columns $\bo{A}^n$ does not change the rank, as $\bo{A}^n$ is a linear combination of the other columns, as we proved in the previous slide.
+		
+	\end{flushleft}
+\end{frame}
+
+
+
+
 
 \end{document}

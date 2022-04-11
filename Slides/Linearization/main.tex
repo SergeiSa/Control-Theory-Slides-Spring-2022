@@ -4,10 +4,10 @@
 
 
 \title{Manipulator equations, Linearization}
-\subtitle{Control Theory, Lecture 12}
+\subtitle{Control Theory, Lecture 13}
 \author{by Sergei Savin}
 \centering
-\date{Spring 2021}
+\date{\mydate}
 
 
 
@@ -17,21 +17,92 @@
 
 \begin{frame}{Content}
 \begin{itemize}
-\item Newton eq., Lagrange eq.
-\item Manipulator eq.
-\item \item 
-\begin{itemize}
-    \item Idea
-    \item Linearization
-\end{itemize}
-\item Linearization of manipulator eq.
-\begin{itemize}
-    \item Change of variables
-    \item State matrix
-    \item Control matrix
-\end{itemize}
+\item Linearization, Taylor
+\item Variations
+\item Linearization of manipulator equations
 \end{itemize}
 \end{frame}
+
+
+
+
+
+
+\begin{frame}{Linear control for nonlinear systems}
+	\framesubtitle{Linearization, Taylor Expansion}
+	\begin{flushleft}
+		
+		In general, for a system of the form $\dot{\bo{x}} = \bo{f}(\bo{x}, \bo{u})$, there is a simple way to linearize it around any given point. The process if based on Taylor expansion:
+		
+		\begin{equation}
+			\bo{f}(\bo{x}, \bo{u}) 	\sim \bo{f}(\bo{x}_0, \bo{u}_0) +
+			\frac{\partial \bo{f}}{\partial \bo{x}} (\bo{x} - \bo{x}_0) + 
+			\frac{\partial \bo{f}}{\partial \bo{u}} (\bo{u} - \bo{u}_0)
+		\end{equation}
+		
+		Denoting $\frac{\partial \bo{f}}{\partial \bo{x}} = \bo{A}$ and $\frac{\partial \bo{f}}{\partial \bo{u}} = \bo{B}$, we get:
+		
+		\begin{equation}
+			\bo{f}(\bo{x}, \bo{u}) 	\sim \bo{f}(\bo{x}_0, \bo{u}_0) +
+			\bo{A} (\bo{x} - \bo{x}_0) + 
+			\bo{B} (\bo{u} - \bo{u}_0)
+		\end{equation}
+		
+		Finally, denoting $ \bo{f}(\bo{x}_0, \bo{u}_0) - \bo{A}\bo{x}_0 - \bo{B} \bo{u}_0 = \bo{c}$ we achieve local linearization of the nonlinear dynamics:
+		
+		\begin{equation}
+			\dot{\bo{x}} \sim \bo{A} \bo{x} + 
+			\bo{B} \bo{u} + \bo{c}
+		\end{equation}
+		
+		
+	\end{flushleft}
+\end{frame}
+
+
+
+
+\begin{frame}{Linear control for nonlinear systems}
+	\framesubtitle{Linearization, variations}
+	\begin{flushleft}
+		
+		Let us define variation $\delta \bo{x} = \bo{x} - \bo{x}_0$ and $\delta \bo{u} = \bo{u} - \bo{u}_0$. Then we can compute $\delta \dot{\bo{x}}$:
+		%
+		\begin{equation}
+		\delta \dot{\bo{x}} = 
+		\dot{\bo{x}} - \dot{\bo{x}}_0
+		\end{equation}		
+		%
+		where $\dot{\bo{x}}_0 = \bo{f}(\bo{x}_0, \bo{u}_0)$. Previously we computed: $\bo{f}(\bo{x}, \bo{u}) 	\sim \bo{f}(\bo{x}_0, \bo{u}_0) +
+		\frac{\partial \bo{f}}{\partial \bo{x}} (\bo{x} - \bo{x}_0) + 
+		\frac{\partial \bo{f}}{\partial \bo{u}} (\bo{u} - \bo{u}_0)$. we can rewrite it as:
+		%
+		\begin{equation}
+	\bo{f}(\bo{x}, \bo{u}) - \bo{f}(\bo{x}_0, \bo{u}_0)	\sim 
+	\frac{\partial \bo{f}}{\partial \bo{x}} (\bo{x} - \bo{x}_0) + 
+	\frac{\partial \bo{f}}{\partial \bo{u}} (\bo{u} - \bo{u}_0)
+		\end{equation}
+	%		
+	\begin{equation}
+	\delta \dot{\bo{x}}	\sim 
+	\frac{\partial \bo{f}}{\partial \bo{x}} \delta \bo{x} + 
+	\frac{\partial \bo{f}}{\partial \bo{u}} \delta \bo{u}
+	\end{equation}		
+	%
+	\begin{equation}
+	\delta \dot{\bo{x}}	\sim 
+	\bo{A}  \delta \bo{x} + 
+	\bo{B}  \delta \bo{u}
+	\end{equation}
+	%		
+		Notice that this expression is always linear. Also notice that this expression is sufficient for stabilizing control design.
+		
+	\end{flushleft}
+\end{frame}
+
+
+
+
 
 
 \begin{frame}{Newton eq., Lagrange eq.}
@@ -104,41 +175,9 @@ One of the ways to think about this problem is to imagine that if there existed 
 
 
 
-\begin{frame}{Linear control for nonlinear systems}
-\framesubtitle{Linearization}
-\begin{flushleft}
-
-In general, for a system of the form $\dot{\bo{x}} = \bo{f}(\bo{x}, \bo{u})$, there is a simple way to linearize it around any given point. The process if based on Taylor expansion:
-
-\begin{equation}
-    \bo{f}(\bo{x}, \bo{u}) 	\sim \bo{f}(\bo{x}_0, \bo{u}_0) +
-    \frac{\partial \bo{f}}{\partial \bo{x}} (\bo{x} - \bo{x}_0) + 
-    \frac{\partial \bo{f}}{\partial \bo{u}} (\bo{u} - \bo{u}_0)
-\end{equation}
-
-Denoting $\frac{\partial \bo{f}}{\partial \bo{x}} = \bo{A}$ and $\frac{\partial \bo{f}}{\partial \bo{u}} = \bo{B}$, we get:
-
-\begin{equation}
-    \bo{f}(\bo{x}, \bo{u}) 	\sim \bo{f}(\bo{x}_0, \bo{u}_0) +
-    \bo{A} (\bo{x} - \bo{x}_0) + 
-    \bo{B} (\bo{u} - \bo{u}_0)
-\end{equation}
-
-Finally, denoting $ \bo{f}(\bo{x}_0, \bo{u}_0) - \bo{A}\bo{x}_0 - \bo{B} \bo{u}_0 = \bo{c}$ we achieve local linearization of the nonlinear dynamics:
-
-\begin{equation}
-    \dot{\bo{x}} \sim \bo{A} \bo{x} + 
-    \bo{B} \bo{u} + \bo{c}
-\end{equation}
-
-
-\end{flushleft}
-\end{frame}
-
-
 
 \begin{frame}{Linear control for nonlinear systems}
-\framesubtitle{Linearization of manipulator eq,}
+\framesubtitle{Linearization of manipulator eq.}
 \begin{flushleft}
 
 We, on the other hand, have eq. in the form $\bo{H} \ddot{\bo{q}} + \bo{C} \dot{\bo{q}} + \bo{g} = \tau_n$. Let us assume $\tau_n = \bo{T}\bo{u}$, where $\bo{T} = \bo{T}(\bo{q})$. We can also define $\bo{x}$:
@@ -148,7 +187,7 @@ We, on the other hand, have eq. in the form $\bo{H} \ddot{\bo{q}} + \bo{C} \dot{
     \bo{q} \\ \dot{\bo{q}} \end{bmatrix}
 \end{equation}
 
-Then our attempt to write system of first order diff. eq. gives us:
+Then our attempt to write system of first order ODE gives us:
 
 \begin{equation}
     \frac{d}{dt} 
@@ -186,22 +225,28 @@ In this case, state matrix $\bo{A}$ becomes:
     \end{bmatrix}
 \end{equation}
 
-Let us expand:
+
+\begin{equation*}
+	\frac{\partial }{\partial \bo{q}} (\bo{H}^{-1} (\bo{T}\bo{u} -  \bo{C} \dot{\bo{q}} - \bo{g}) ) 
+	= 
+	\frac{\partial \bo{H}^{-1}}{\partial \bo{q}} (\bo{T}\bo{u} -  \bo{C} \dot{\bo{q}} - \bo{g})
+	+ 
+	\bo{H}^{-1} 
+	\frac{\partial }{\partial \bo{q}} 
+	(\bo{T}\bo{u} -  \bo{C} \dot{\bo{q}} - \bo{g}) )
+\end{equation*}
 
 \begin{equation}
-    \frac{\partial }{\partial \bo{q}} (\bo{H}^{-1} (\bo{T}\bo{u} -  \bo{C} \dot{\bo{q}} - \bo{g}) ) 
-    = 
-    \frac{\partial \bo{H}^{-1}}{\partial \bo{q}} (\bo{T}\bo{u} -  \bo{C} \dot{\bo{q}} - \bo{g})
-    + 
-    \bo{H}^{-1} 
-    \frac{\partial }{\partial \bo{q}} 
-    (\bo{T}\bo{u} -  \bo{C} \dot{\bo{q}} - \bo{g}) )
+	\frac{\partial (\bo{H}^{-1} (\bo{T}\bo{u} -  \bo{C} \dot{\bo{q}} - \bo{g}) )}{\partial \dot{\bo{q}}} 
+	= 
+	-\bo{H}^{-1}\bo{C} - \bo{H}^{-1} 
+	\frac{\partial \bo{C}}{\partial \dot{\bo{q}}}  \dot{\bo{q}}
 \end{equation}
 
 \begin{equation}
-    \frac{\partial \bo{H}^{-1}}{\partial \bo{q}} = 
-    - \bo{H}^{-1} \frac{\partial \bo{H}}{\partial \bo{q}} 
-    \bo{H}^{-1}
+	\frac{\partial \bo{H}^{-1}}{\partial \bo{q}} = 
+	- \bo{H}^{-1} \frac{\partial \bo{H}}{\partial \bo{q}} 
+	\bo{H}^{-1}
 \end{equation}
 
 \end{flushleft}
@@ -210,35 +255,54 @@ Let us expand:
 
 
 
+
 \begin{frame}{Linear control for nonlinear systems}
-\framesubtitle{State matrix, Control matrix}
+	\framesubtitle{Linearization around node}
+	\begin{flushleft}
+		
+		In the general case it is:
+	
+	Let us make an assumption that our linearization point $\bo{q}_0$, $\dot{\bo{q}}_0$ and $\bo{u}_0$ is a node, meaning that $\ddot{\bo{q}}_0 = 0$, which implies:
+	
+	\begin{equation}
+		\bo{C} \dot{\bo{q}} + \bo{g} = \bo{T}\bo{u}
+	\end{equation}
+
+Then 
+	
+	\begin{equation*}
+		\frac{\partial }{\partial \bo{q}} (\bo{H}^{-1} (\bo{T}\bo{u} -  \bo{C} \dot{\bo{q}} - \bo{g}) ) 
+		= 
+		\frac{\partial \bo{H}^{-1}}{\partial \bo{q}} 0
+		+ 
+		\bo{H}^{-1} 
+		\frac{\partial }{\partial \bo{q}} 
+		(\bo{T}\bo{u} -  \bo{C} \dot{\bo{q}} - \bo{g}) )
+	\end{equation*}
+	
+	
+		
+	\end{flushleft}
+\end{frame}
+
+
+
+\begin{frame}{Linear control for nonlinear systems}
+\framesubtitle{Control matrix}
 \begin{flushleft}
-
-...and:
-
-\begin{equation}
-\frac{\partial (\bo{H}^{-1} (\bo{T}\bo{u} -  \bo{C} \dot{\bo{q}} - \bo{g}) )}{\partial \dot{\bo{q}}} 
-= 
--\bo{H}^{-1}\bo{C} - \bo{H}^{-1} 
-\frac{\partial \bo{C}}{\partial \dot{\bo{q}}}  \dot{\bo{q}}
-\end{equation}
 
 Control matrix $\bo{B}$ becomes:
 
 \begin{equation}
     \bo{B} = 
     \begin{bmatrix}
-    0 & 0 \\
+    0\\
     \frac{\partial (\bo{H}^{-1} (\bo{T}\bo{u} -  \bo{C} \dot{\bo{q}} - \bo{g}) )}{\partial \bo{u}} 
-    &
-    0
     \end{bmatrix}
     =
         \begin{bmatrix}
-    0 & 0 \\
+    0\\
     \bo{H}^{-1} \bo{T}
-    &
-    0
     \end{bmatrix}
 \end{equation}
 
@@ -250,19 +314,15 @@ Control matrix $\bo{B}$ becomes:
 
 
 \begin{frame}{Thank you!}
-\centerline{Lecture slides are available via Moodle.}
-\bigskip
-\centerline{You can help improve these slides at:}
-\centerline{
-\textcolor{blue}{\centerline{\href{https://github.com/SergeiSa/Control-Theory-Slides-Spring-2021}{github.com/SergeiSa/Control-Theory-Slides-Spring-2021}}}}
-
-\bigskip
-
-\textcolor{black}{\qrcode[height=1.5in]{github.com/SergeiSa/Control-Theory-Slides-Spring-2021}}
-
-\bigskip
-
-\centerline{Check Moodle for additional links, videos, textbook suggestions.}
+	\centerline{Lecture slides are available via Moodle.}
+	\bigskip
+	\centerline{You can help improve these slides at:}
+	\centerline{\mygit}
+	\bigskip
+	\centerline{Check Moodle for additional links, videos, textbook suggestions.}
+	\bigskip
+	
+	\centerline{\textcolor{black}{\qrcode[height=1.6in]{https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022}}}
 \end{frame}
 
 \end{document}

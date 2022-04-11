@@ -313,8 +313,8 @@ The same way we can rewrite \eqref{eq:Lyapunov_xw}:
 		\bigskip
 		
 		Proof: $\dot V = \left(\sum\limits_{i=1}^{n} \alpha_i \bo{A}_i \right)^\top \bo{S} + \bo{S} 
-		\left( \sum\limits_{i=1}^{n} \alpha_i \bo{A}_i \right)$ can be re-written as: 
-		$\dot V = \alpha_i (\bo{A}_i^\top \bo{S} + \bo{S} \bo{A}_i)$ and since $\bo{A}_i^\top \bo{S} + \bo{S} \bo{A}_i \leq 0$ and $\alpha_i \geq 0$, then $\dot V \leq 0$. \qed
+		\left( \sum\limits_{i=1}^{n} \alpha_i \bo{A}_i \right) \leq 0$ can be re-written as: 
+		$\dot V = \sum\limits_{i=1}^{n} \left( \alpha_i (\bo{A}_i^\top \bo{S} + \bo{S} \bo{A}_i) \right) $ and since $\bo{A}_i^\top \bo{S} + \bo{S} \bo{A}_i \leq 0$ and $\alpha_i \geq 0$, then $\dot V \leq 0$. \qed
 		
 	\end{flushleft}
 \end{frame}
