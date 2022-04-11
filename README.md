@@ -15,7 +15,7 @@ This repository contains regularly updated course materials. You can use lecture
 * Lecture 9 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/tree/main/Slides/Observer
 * Lecture 10 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/tree/main/Slides/ControllabilityObservability
 * Lecture 11 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/tree/main/Slides/LMI
-* Lecture 12 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2021/tree/main/Slides/Linearization
+* Lecture 12 - https://github.com/SergeiSa/Control-Theory-Slides-Spring-2022/tree/main/Slides/Linearization
 
 # Lecture videos (2022 offering)
 
