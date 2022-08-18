@@ -110,6 +110,8 @@ Consider adding \*.pdf to the .git/info/exclude file on your local repo. Here is
 [Download](http://www.personal.psu.edu/sxt104/class/Math251/Notes-LinearSystems.pdf)
 * Control theory by S. Simrock - sections 1, 3:
 https://cds.cern.ch/record/1100534/files/p73.pdf
+* Simon, D., 2006. Optimal state estimation: Kalman, H∞, and nonlinear approaches. Hoboken. NJ: John Wiley and Sons
+  * Chapter 1.2 Linear systems 
 
 
 ## Lecture 2. Stability
@@ -175,6 +177,8 @@ https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-241j-d
 
 * Invariant subspaces, Sylvester equation, PBH https://stanford.edu/class/ee363/sessions/s2notes.pdf
 * EE363 Winter 2008-09 Lecture 6 Invariant subspaces https://web.stanford.edu/class/ee363/lectures/inv-sub.pdf
+* Simon, D., 2006. Optimal state estimation: Kalman, H∞, and nonlinear approaches. Hoboken. NJ: John Wiley and Sons
+  * 1.7 Controllability and observability
 
 ## Other
 
@@ -194,6 +198,7 @@ https://cds.cern.ch/record/1100534/files/p73.pdf
   * For statistical prerequisites, see Mathematics for Machine Learning: PCA, Week 1: https://www.coursera.org/learn/pca-machine-learning.
 
 ### Observer Design, Kalman Filter
+  * Simon, D., 2006. Optimal state estimation: Kalman, H∞, and nonlinear approaches. Hoboken. NJ: John Wiley and Sons
   * Control theory by S. Simrock - section 8.1:
 https://cds.cern.ch/record/1100534/files/p73.pdf
 
