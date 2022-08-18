@@ -199,6 +199,7 @@ https://cds.cern.ch/record/1100534/files/p73.pdf
 
 ### Observer Design, Kalman Filter
   * Simon, D., 2006. Optimal state estimation: Kalman, H∞, and nonlinear approaches. Hoboken. NJ: John Wiley and Sons
+    * Chapter 5. The discrete-time Kalman filter.
   * Control theory by S. Simrock - section 8.1:
 https://cds.cern.ch/record/1100534/files/p73.pdf
 
